@@ -1,0 +1,11 @@
+.toggle-checkbox {
+  display: none;
+}
+
+.toggle-checkbox ~ * {
+  display: none;
+}
+
+.toggle-checkbox:checked ~ * {
+  display: block;
+}
