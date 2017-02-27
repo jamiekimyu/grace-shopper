@@ -19,7 +19,9 @@
     "test": "mocha --compilers js:babel-register app/**/*.test.js app/**/*.test.jsx db/**/*.test.js server/**/*.test.js",
     "test-watch": "npm run test -- --watch",
     "seed": "node db/seed.js",
-    "deploy-heroku": "bin/deploy-heroku.sh"
+    "deploy-heroku": "bin/deploy-heroku.sh",
+    "lint": "eslint .",
+    "ci": "npm run lint"
   },
   "repository": {
     "type": "git",
@@ -74,6 +76,9 @@
     "babel-preset-es2015": "^6.18.0",
     "babel-preset-react": "^6.16.0",
     "chai": "^3.5.0",
+    "eslint": "^3.16.1",
+    "eslint-config-fullstack": "^2.7.0",
+    "eslint-plugin-react": "^6.10.0",
     "mocha": "^3.1.2",
     "nodemon": "^1.11.0",
     "supertest": "^2.0.1",
