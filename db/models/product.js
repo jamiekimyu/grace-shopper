@@ -1,5 +1,6 @@
 const Sequelize = require('sequelize');
 const db = require('APP/db');
+const Review = require('./review');
 
 const Product = db.define('products', {
   name: {
@@ -22,7 +23,12 @@ const Product = db.define('products', {
   }
 }, {
   getterMethods: {
-    averageRating: function(){}
+    averageRating: function(){
+      Review.findAll()
+            .then((foundReviews) => {
+              
+            });
+    }
   }
 });
 
