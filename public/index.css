@@ -22,6 +22,7 @@
 }
 .cart-flyout {
   margin-top: 16px;
+  width: 400px;
 }
 
 .cart-count {
@@ -35,4 +36,14 @@
   left: 8px;
   width: 14px;
   text-align: center;
+}
+
+.cart-price {
+  padding-left: 3px;
+  padding-right: 3px;
+}
+
+.cart-quantity {
+  padding-left: 3px;
+  padding-right: 3px;
 }

@@ -10,6 +10,7 @@ const Product = require('./product')
 const Record = require('./record')
 const Order = require('./order')
 const Review = require('./review')
+const OrderItem = require('./orderItem')
 
 OAuth.belongsTo(User)
 User.hasOne(OAuth)
@@ -19,6 +20,12 @@ Record.hasMany(Product)
 
 Order.belongsTo(User)
 User.hasMany(Order)
+
+OrderItem.belongsTo(Product)
+Product.hasMany(OrderItem)
+
+OrderItem.belongsTo(Order)
+Order.hasMany(OrderItem)
 
 Review.belongsTo(Product)
 Review.belongsTo(User)
