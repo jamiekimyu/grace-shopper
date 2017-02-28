@@ -13,3 +13,4 @@ npm-debug.log
 
 # Workspace
 .idea/workspace.xml
+.DS_Store
