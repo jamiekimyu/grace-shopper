@@ -96,7 +96,7 @@ const seedProducts = () => db.Promise.map([
     quantity: 17,
     recordId: 10
   },
-]), product => db.model('products').create(product);
+], product => db.model('products').create(product));
 
 //db.Promise.each => mantains order
 //while .map doesn't
@@ -160,9 +160,8 @@ const seedRecords = () => db.Promise.each([
     artist: 'The Decemberists',
     releaseDate: 'May 15, 2007',
     genre: 'Hipster'
-  }
-
-])
+  },
+], record => db.model('records').create(record));
 
 db.didSync
   .then(() => db.sync({force: true}))
