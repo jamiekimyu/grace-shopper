@@ -17,8 +17,8 @@ User.hasOne(OAuth)
 Product.belongsTo(Record)
 Record.hasMany(Product)
 
-//Orders must belong to a user OR guest session (authenticated vs unauthenticated)
-//not sure how to implement the above task
+Order.belongsTo(User)
+User.hasMany(Orders)
 
 Review.belongsTo(Product)
 Review.belongsTo(User)
