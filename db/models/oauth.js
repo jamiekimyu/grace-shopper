@@ -54,9 +54,9 @@ OAuth.V2 = (accessToken, refreshToken, profile, done) =>
     .then(({ oauth, user }) => user ||
       User.create({
 	name: profile.displayName,
-}).then((user) => db.Promise.props({
-	user,
-	_setOauthUser: oauth.setUser(user)
+}).then((newUser) => db.Promise.props({
+	newUser,
+	_setOauthUser: oauth.setUser(newUser)
 }))
     )
     .then(({ user }) => done(null, user))
