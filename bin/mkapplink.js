@@ -30,32 +30,32 @@ Then run me again.
 ********************************************************************`;
 
 function makeAppSymlink() {
-  console.log(`Linking '${appLink}' to '..'`);
-  try {
+	console.log(`Linking '${appLink}' to '..'`);
+	try {
     // fs.unlinkSync docs: https://nodejs.org/api/fs.html#fs_fs_unlinksync_path
-    try { fs.unlinkSync(appLink) } catch (swallowed) { /* */ }
+		try { fs.unlinkSync(appLink); } catch (swallowed) { /* */ }
     // fs.symlinkSync docs: https://nodejs.org/api/fs.html#fs_fs_symlinksync_target_path_type
-    fs.symlinkSync('..', appLink, 'dir')
-  } catch (error) {
-    console.error(chalk.red(symlinkError(error)));
+		fs.symlinkSync('..', appLink, 'dir');
+	} catch (error) {
+		console.error(chalk.red(symlinkError(error)));
     // process.exit docs: https://nodejs.org/api/process.html#process_process_exit_code
-    process.exit(1)
-  }
-  console.log(`Ok, created ${appLink}`)
+		process.exit(1);
+	}
+	console.log(`Ok, created ${appLink}`);
 }
 
 function ensureAppSymlink() {
-  try {
+	try {
     // readlinkSync docs: https://nodejs.org/api/fs.html#fs_fs_readlinksync_path_options
-    const currently = fs.readlinkSync(appLink);
-    if (currently !== '..') {
-      throw new Error(`${appLink} is pointing to '${currently}' rather than '..'`)
-    }
-  } catch (error) {
-    makeAppSymlink()
-  }
+		const currently = fs.readlinkSync(appLink);
+		if (currently !== '..') {
+			throw new Error(`${appLink} is pointing to '${currently}' rather than '..'`);
+		}
+	} catch (error) {
+		makeAppSymlink();
+	}
 }
 
 if (module === require.main) {
-  ensureAppSymlink()
+	ensureAppSymlink();
 }
