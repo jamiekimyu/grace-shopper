@@ -18,7 +18,7 @@ Product.belongsTo(Record)
 Record.hasMany(Product)
 
 Order.belongsTo(User)
-User.hasMany(Orders)
+User.hasMany(Order)
 
 Review.belongsTo(Product)
 Review.belongsTo(User)

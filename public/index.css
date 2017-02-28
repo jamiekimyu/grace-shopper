@@ -36,3 +36,10 @@
   width: 14px;
   text-align: center;
 }
+
+.productDisplay{
+  border: 1px solid black;
+  height: 200px;
+  width: 200px;
+  margin-right: 10em;
+}
