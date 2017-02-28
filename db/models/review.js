@@ -12,7 +12,12 @@ const Review = db.define('review', {
   },
   comment: {
     type: Sequelize.TEXT,
-    allowNull: false
+    allowNull: false,
+    validate: {
+      len: {
+        args: [20, 150]
+      }
+    }
   }
 }, {});
 
