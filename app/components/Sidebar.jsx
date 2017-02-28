@@ -4,11 +4,11 @@ import { Link } from 'react-router'
 
 export const Sidebar = ({ isAdmin }) => (
   <ul className="nav nav-stacked">
-    <li><Link>Services</Link></li>
-    <li><Link>Records</Link></li>
-    <li><Link>Equipment</Link></li>
+    <li><Link to="/services">Services</Link></li>
+    <li><Link to="/records">Records</Link></li>
+    <li><Link to="/equipment">Equipment</Link></li>
     { isAdmin ? ( <li><hr /></li> ) : null }
-    { isAdmin ? ( <li><Link>Admin</Link></li> ) : null }
+    { isAdmin ? ( <li><Link to="/admin">Admin</Link></li> ) : null }
   </ul>
 )
 

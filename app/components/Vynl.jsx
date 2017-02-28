@@ -5,6 +5,7 @@ import { Link } from 'react-router'
 import Login from './Login'
 import WhoAmI from './WhoAmI'
 import Sidebar from './Sidebar'
+import ShoppingCart from './ShoppingCart'
 // Header
 
 export const Vynl = connect(
@@ -12,20 +13,30 @@ export const Vynl = connect(
 ) (
   ({ user, children }) =>
     <div>
-      <div className="navbar navbar-default">
+      <nav className="navbar navbar-default">
         <div className="container-fluid">
           <div className="navbar-header">
-            <Link>VYNL</Link>
+            <Link to="/" className="navbar-brand">VYNL</Link>
           </div>
-          <div className="nav navbar-nav navbar-right">
-            <label for="">
-              {user ? user.name : "Login / Sign Up"}
-            </label>
-            <input id="" type="checkbox" className="toggle-checkbox" />
-            {user ? <WhoAmI/> : <Login/>}
-          </div>
+          <ul className="nav navbar-nav navbar-right">
+            <li className="navbar-text">
+              <label htmlFor="cart-toggle">
+                <i className="glyphicon glyphicon-shopping-cart" />
+                <div className="cart-count">99</div>
+              </label>
+              <input id="cart-toggle" type="checkbox" className="toggle-checkbox" />
+              <div className="cart-flyout"><ShoppingCart /></div>
+            </li>
+            <li className="navbar-text">
+              <label htmlFor="login-toggle">
+                {user ? user.name : 'Login / Sign Up'}
+              </label>
+              <input id="login-toggle" type="checkbox" className="toggle-checkbox" />
+              <div className="login-flyout">{user ? <WhoAmI /> : <Login />}</div>
+            </li>
+          </ul>
         </div>
-      </div>
+      </nav>
       <div className="container-fluid">
         <div className="col-md-2">
           <Sidebar />
