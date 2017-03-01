@@ -33,19 +33,15 @@ const Product = db.define('products', {
 }, {
 	getterMethods: {
 		averageRating: function(){
-			Review.findAll({
-				where: {
-					productId: this.id
-				}
-			})
-      .then((foundReviews) => {
-	let total = 0;
-	foundReviews.forEach( function(review) {
-		total += review.rating;
-	});
-	let average = total / foundReviews.length;
-	return average;
-});
+			this.getReviews()
+				.then((foundReviews) => {
+					let total = 0;
+					foundReviews.forEach( function(review) {
+						total += review.rating;
+					});
+					let average = total / foundReviews.length;
+					return average;
+				});
 		}
 	}
 });

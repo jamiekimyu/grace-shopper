@@ -16,7 +16,7 @@ OAuth.belongsTo(User);
 User.hasOne(OAuth);
 
 Product.belongsTo(Record);
-Record.hasMany(Product);
+Record.hasOne(Product);
 
 Order.belongsTo(User);
 User.hasMany(Order);
@@ -28,6 +28,9 @@ OrderItem.belongsTo(Order);
 Order.hasMany(OrderItem);
 
 Review.belongsTo(Product);
+Product.hasMany(Review);
+
 Review.belongsTo(User);
+User.hasMany(Review);
 
 module.exports = {User};

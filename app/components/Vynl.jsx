@@ -6,7 +6,6 @@ import Login from './Login';
 import WhoAmI from './WhoAmI';
 import Sidebar from './Sidebar';
 import ShoppingCart from './ShoppingCart';
-// Header
 
 export const Vynl = connect(
   ({ auth }) => ({ user: auth })
