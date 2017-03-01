@@ -1,10 +1,12 @@
-import React from 'react'
-import { connect } from 'react-redux'
-import { Link } from 'react-router'
+import React from 'react';
+import { connect } from 'react-redux';
+import { Link } from 'react-router';
 
 export const Home = () => (
   <div>
-    Coming Soon Home&trade;
+    <img className="float-left" src="aboutPuppy.png" />
+    <h1>Welcome To VYNL</h1>
+    <p>We sell records.</p>
   </div>
 );
 
@@ -15,4 +17,4 @@ const mapDispatchToProps = () => ({});
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Home)
+)(Home);
