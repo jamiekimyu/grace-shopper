@@ -3,12 +3,16 @@ const Sequelize = require('sequelize');
 const db = require('APP/db');
 
 const Record = db.define('record', {
+	title: {
+		type: Sequelize.STRING,
+		allowNull: false
+	},
 	artist: {
 		type: Sequelize.STRING,
 		allowNull: false
 	},
 	releaseDate: {
-		type: Sequelize.DATE,
+		type: Sequelize.STRING,
 		allowNull: false
 	},
 	genre: {
