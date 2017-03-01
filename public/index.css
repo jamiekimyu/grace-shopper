@@ -58,3 +58,10 @@
 .admin-table{
   width: 100%;
 }
+
+.home-page-image{
+  float: left;
+  width: 350px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
