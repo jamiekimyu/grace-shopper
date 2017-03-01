@@ -2,33 +2,38 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
 
-export const Admin = () => (
+export const Admin = ({products}) => (
   <div>
+    {JSON.stringify(products)}
     <table className="admin-table">
-      <tr>
-        <th>
-          Name
-        </th>
-        <th>
-          Price
-        </th>
-        <th>
-          Edit
-        </th>
-        <th>
-          Delete
-        </th>
-      </tr>
-      <tr>
-        <td>
-          Fuzzy Socks
-        </td>
-        <td>$27.98</td>
-        {/*This button would populate the form with this item and allow user to edit it*/}
-        <td><Link className="btn btn-primary">Edit</Link></td>
-        {/*This button would allow user to delete this item*/}
-        <td><Link className="btn btn-primary">Delete</Link></td>
-      </tr>
+      <thead>
+        <tr>
+          <th>
+            Name
+          </th>
+          <th>
+            Price
+          </th>
+          <th>
+            Edit
+          </th>
+          <th>
+            Delete
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            Fuzzy Socks
+          </td>
+          <td>$27.98</td>
+          {/*This button would populate the form with this item and allow user to edit it*/}
+          <td><Link className="btn btn-primary">Edit</Link></td>
+          {/*This button would allow user to delete this item*/}
+          <td><Link className="btn btn-primary">Delete</Link></td>
+        </tr>
+      </tbody>
     </table>
     <form>
       <div className="form-group">
@@ -85,7 +90,9 @@ export const Admin = () => (
   </div>
 );
 
-const mapStateToProps = () => ({});
+const mapStateToProps = ({products}) => ({
+  products
+});
 
 const mapDispatchToProps = () => ({});
 

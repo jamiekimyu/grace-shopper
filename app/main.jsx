@@ -11,19 +11,20 @@ import Records from './components/Records';
 import Equipment from './components/Equipment';
 import Admin from './components/Admin';
 import {Vynl} from './components/Vynl';
+import {fetch} from './reducers/products';
 
 render(
-  <Provider store={store}>
-    <Router history={browserHistory}>
-      <Route path="/" component={Vynl}>
-        <IndexRedirect to="/home" />
-        <Route path="/home" component={Home} />
-        <Route path="/services" component={Services} />
-        <Route path="/records" component={Records} />
-        <Route path="/equipment" component={Equipment} />
-        <Route path="/admin" component={Admin} />
-      </Route>
-    </Router>
-  </Provider>,
-  document.getElementById('main')
+	<Provider store={store}>
+		<Router history={browserHistory}>
+			<Route path="/" component={Vynl}>
+				<IndexRedirect to="/home" />
+				<Route path="/home" component={Home} />
+				<Route path="/services" component={Services} />
+				<Route path="/records" component={Records} />
+				<Route path="/equipment" component={Equipment} />
+				<Route path="/admin" component={Admin} onEnter={() => store.dispatch(fetch())} />
+			</Route>
+		</Router>
+	</Provider>,
+	document.getElementById('main')
 );
