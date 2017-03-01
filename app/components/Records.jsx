@@ -1,6 +1,6 @@
-import React from 'react'
-import { connect } from 'react-redux'
-import { Link } from 'react-router'
+import React from 'react';
+import { connect } from 'react-redux';
+import { Link } from 'react-router';
 
 export const Records = () => (
   <div className="container-fluid">
@@ -33,4 +33,4 @@ const mapDispatchToProps = () => ({});
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Records)
+)(Records);

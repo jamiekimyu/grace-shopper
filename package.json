@@ -20,7 +20,7 @@
     "test-watch": "npm run test -- --watch",
     "seed": "node db/seed.js",
     "deploy-heroku": "bin/deploy-heroku.sh",
-    "lint": "eslint .",
+    "lint": "eslint --ext js,jsx .",
     "ci": "npm run lint"
   },
   "repository": {

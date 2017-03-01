@@ -1,16 +1,16 @@
-import React from 'react'
-import {connect} from 'react-redux'
-import { Link } from 'react-router'
+import React from 'react';
+import {connect} from 'react-redux';
+import { Link } from 'react-router';
 
-import Login from './Login'
-import WhoAmI from './WhoAmI'
-import Sidebar from './Sidebar'
-import ShoppingCart from './ShoppingCart'
+import Login from './Login';
+import WhoAmI from './WhoAmI';
+import Sidebar from './Sidebar';
+import ShoppingCart from './ShoppingCart';
 // Header
 
 export const Vynl = connect(
   ({ auth }) => ({ user: auth })
-) (
+)(
   ({ user, children }) =>
     <div>
       <nav className="navbar navbar-default">
@@ -46,4 +46,4 @@ export const Vynl = connect(
         </div>
       </div>
     </div>
-)
+);
