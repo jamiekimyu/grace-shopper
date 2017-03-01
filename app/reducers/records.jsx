@@ -6,7 +6,7 @@ const receiveRecords = records => ({
   records
 });
 
-const getRecords = () => {
+export const getRecords = () => {
 
   return dispatch => {
     return axios.get('/api/records')

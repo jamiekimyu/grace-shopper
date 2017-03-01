@@ -27,8 +27,9 @@ export const Records = () => (
 );
 
 const mapStateToProps = (state) => {
+  console.log(state)
   return {
-    records: this.state.records
+    records: state.records
   };
 };
 
