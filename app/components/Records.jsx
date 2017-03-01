@@ -26,7 +26,11 @@ export const Records = () => (
 
 );
 
-const mapStateToProps = () => ({});
+const mapStateToProps = (state) => {
+  return {
+    records: this.state.records
+  };
+};
 
 const mapDispatchToProps = () => ({});
 
