@@ -33,12 +33,7 @@ const Product = db.define('products', {
 }, {
 	getterMethods: {
 		averageRating: function(){
-			Review
-				.findAll({
-					where: {
-						productId: this.id
-					}
-				})
+			this.getReviews()
 				.then((foundReviews) => {
 					let total = 0;
 					foundReviews.forEach( function(review) {
