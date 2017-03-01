@@ -1,6 +1,6 @@
-import React from 'react'
-import { connect } from 'react-redux'
-import { Link } from 'react-router'
+import React from 'react';
+import { connect } from 'react-redux';
+import { Link } from 'react-router';
 
 export const Sidebar = ({ isAdmin }) => (
   <ul className="nav nav-stacked">
@@ -10,17 +10,17 @@ export const Sidebar = ({ isAdmin }) => (
     { isAdmin ? ( <li><hr /></li> ) : null }
     { isAdmin ? ( <li><Link to="/admin">Admin</Link></li> ) : null }
   </ul>
-)
+);
 
 const mapStateToProps = () => ({
-  isAdmin: true
-})
+	isAdmin: true
+});
 
 const mapDispatchToProps = () => ({
   //
-})
+});
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Sidebar)
+)(Sidebar);

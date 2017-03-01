@@ -20,22 +20,22 @@ export const ShoppingCart = ({cart}) => (
 );
 
 const mapStateToProps = () => ({
-  cart: [
-    {
-      quantity: 100,
-      product: {
-        name: 'Fuzzy Slippers',
-        price: 5
-      }
-    },
-    {
-      quantity: 100,
-      product: {
-        name: 'Hipster Vinyl Records',
-        price: 1000
-      }
-    }
-  ]
+	cart: [
+		{
+			quantity: 100,
+			product: {
+				name: 'Fuzzy Slippers',
+				price: 5
+			}
+		},
+		{
+			quantity: 100,
+			product: {
+				name: 'Hipster Vinyl Records',
+				price: 1000
+			}
+		}
+	]
 });
 
 const mapDispatchToProps = () => ({});
@@ -43,4 +43,4 @@ const mapDispatchToProps = () => ({});
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(ShoppingCart)
+)(ShoppingCart);

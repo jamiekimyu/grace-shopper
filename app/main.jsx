@@ -1,18 +1,18 @@
-'use strict'
-import React from 'react'
-import {Router, Route, IndexRedirect, browserHistory} from 'react-router'
-import {render} from 'react-dom'
-import {connect, Provider} from 'react-redux'
+'use strict';
+import React from 'react';
+import {Router, Route, IndexRedirect, browserHistory} from 'react-router';
+import {render} from 'react-dom';
+import {connect, Provider} from 'react-redux';
 
-import store from './store'
-import Home from './components/Home'
-import Services from './components/Services'
-import Records from './components/Records'
-import Equipment from './components/Equipment'
-import Admin from './components/Admin'
-import {Vynl} from './components/Vynl'
+import store from './store';
+import Home from './components/Home';
+import Services from './components/Services';
+import Records from './components/Records';
+import Equipment from './components/Equipment';
+import Admin from './components/Admin';
+import {Vynl} from './components/Vynl';
 
-render (
+render(
   <Provider store={store}>
     <Router history={browserHistory}>
       <Route path="/" component={Vynl}>
@@ -26,4 +26,4 @@ render (
     </Router>
   </Provider>,
   document.getElementById('main')
-)
+);
