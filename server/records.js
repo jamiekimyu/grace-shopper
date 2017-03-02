@@ -10,6 +10,6 @@ module.exports = require('express').Router()
     .then(records => res.json(records))
     .catch(next))
   .get('/:id', (req, res, next) =>
-    Product.findById(req.params.id)
+    Record.findById(req.params.id)
     .then(record => res.json(record))
     .catch(next));
