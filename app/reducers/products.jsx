@@ -6,6 +6,17 @@ const reducer = (state = [], action) => {
 		return action.products;
 	case DELETE_ONE:
 		return state.filter((product) => product.id !== action.productId);
+	case CHANGE_ONE:
+		return state.map((product) => (
+			product.id === action.product.id ?
+			action.product :
+			product
+		));
+
+	case CREATE_ONE:
+		const stateSlice = state.slice();
+		stateSlice.push(action.product);
+		return stateSlice;
 	default:
 		return state;
 	}
@@ -21,6 +32,18 @@ const DELETE_ONE = 'PRODUCTS_DELETE_ONE';
 export const deleteOne = (productId) => ({
 	type: DELETE_ONE,
 	productId
+});
+
+const CHANGE_ONE = 'PRODUCTS_CHANGE_ONE';
+export const changeOne = (product) => ({
+	type: CHANGE_ONE,
+	product
+});
+
+const CREATE_ONE = 'PRODUCTS_CREATE_ONE';
+export const createOne = (product) => ({
+	type: CREATE_ONE,
+	product
 });
 
 export const fetch = () => (
@@ -40,6 +63,26 @@ export const deleteProduct = (productId) => (
 			.then(() => dispatch(deleteOne(productId)))
 			.catch(() => {
 				console.error('Failed to delete product', productId);
+			})
+	)
+);
+
+export const changeProduct = (productId, product) => (
+	(dispatch) => (
+		axios.put(`/api/products/${productId}`, product)
+			.then(({data}) => dispatch(changeOne(data)))
+			.catch(() => {
+				console.error('Failed to update product', productId, product);
+			})
+	)
+);
+
+export const createProduct = (product) => (
+	(dispatch) => (
+		axios.post('/api/products', product)
+			.then(({data}) => dispatch(createOne(data)))
+			.catch(() => {
+				console.error('Failed to create product', product);
 			})
 	)
 );

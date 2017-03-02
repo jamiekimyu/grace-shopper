@@ -18,4 +18,27 @@ module.exports = require('express').Router()
 		})
 		.then(() => res.sendStatus(204))
 		.catch(next)
+	))
+	.put('/:id', (req, res, next) => (
+		Product.update(
+			req.body,
+			{
+				where: {
+					id: req.params.id
+				},
+				returning: true
+			}
+		)
+		.then((result) => res.json(result[1][0]))
+		.catch(next)
+	))
+	.post('/', (req, res, next) => (
+		Product.create(
+			req.body,
+			{
+				returning: true
+			}
+		)
+		.then((result) => res.json(result))
+		.catch(next)
 	));

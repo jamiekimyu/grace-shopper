@@ -21,6 +21,7 @@ export default class Form extends Component {
 
 		this.handleChange = this.handleChange.bind(this);
 		this.handleRecordChange = this.handleRecordChange.bind(this);
+		this.handleSubmit = this.handleSubmit.bind(this);
 	}
 
 	componentWillReceiveProps(nextProps) {
@@ -61,9 +62,14 @@ export default class Form extends Component {
 		});
 	}
 
+	handleSubmit(event) {
+		event.preventDefault();
+		this.props.handleSubmit(this.props.current.id, this.state);
+	}
+
 	render() {
 		return (
-			<form>
+			<form onSubmit={this.handleSubmit}>
 	      <div className="form-group">
 	        <label htmlFor="admin-type">Type</label>
 	        <select
@@ -117,11 +123,12 @@ export default class Form extends Component {
 
 	      <div className="form-group">
 	        <label htmlFor="admin-description">Description</label>
-	        <textbox
+	        <textarea
 						className="form-control"
 						id="admin-description"
+						value={this.state.description}
 						onChange={this.handleChange}
-					>{this.state.description}</textbox>
+					/>
 	      </div>
 
 	      <div className="form-group">
@@ -152,7 +159,7 @@ export default class Form extends Component {
 	          </div>
 
 						<div className="form-group">
-	            <label htmlFor="admin-record-title">Artist</label>
+	            <label htmlFor="admin-record-title">Title</label>
 	            <input
 								type="text"
 								className="form-control"
@@ -185,6 +192,11 @@ export default class Form extends Component {
 	          </div>
 	        </div>
 	      </div>
+				<input
+					type="submit"
+					className="btn btn-primary"
+					value="Submit"
+				/>
 	    </form>
 		);
 	}
