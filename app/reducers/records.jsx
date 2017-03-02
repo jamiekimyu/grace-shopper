@@ -11,17 +11,14 @@ export const getRecords = () => {
 
 	return dispatch => {
 		return axios.get('/api/records')
-      .then(response => {
-	dispatch(receiveRecords(response.data));
-});
+			.then((response) => {
+				dispatch(receiveRecords(response.data));
+			});
 	};
 
 };
 
 /* REDUCER */
-// const initialState = {
-//   records: []
-// };
 
 const recordReducer = (state = [], action) => {
 
@@ -31,15 +28,11 @@ const recordReducer = (state = [], action) => {
 
 	case RECEIVE_RECORDS:
 		return action.records;
-      //newState.records = action.records;
-      //break;
 
 	default:
 		return state;
 
 	}
-
-  //return newState;
 
 };
 
