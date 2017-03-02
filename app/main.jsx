@@ -12,6 +12,11 @@ import Equipment from './components/Equipment';
 import Admin from './components/Admin';
 import {Vynl} from './components/Vynl';
 import {fetch} from './reducers/products';
+import {getRecords} from './reducers/records';
+
+const onRecordsEnter = function () {
+	store.dispatch(getRecords());
+};
 
 render(
 	<Provider store={store}>
@@ -20,7 +25,7 @@ render(
 				<IndexRedirect to="/home" />
 				<Route path="/home" component={Home} />
 				<Route path="/services" component={Services} />
-				<Route path="/records" component={Records} />
+				<Route path="/records" component={Records} onEnter={onRecordsEnter} />
 				<Route path="/equipment" component={Equipment} />
 				<Route path="/admin(/:id)" component={Admin} onEnter={() => store.dispatch(fetch())} />
 			</Route>
