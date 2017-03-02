@@ -34,7 +34,7 @@ const seedRecords = () => db.Promise.each([
 			price: Math.floor(Math.random() * 100000) / 100,
 			description: 'CDs are so 2000',
 			primaryCategory: 'Record',
-			photo: 'albums/neutralmilkhotel-intheaeroplaneover.jpg',
+			photo: 'albums/radiohead-okcomputer.jpg',
 			quantity: Math.floor(Math.random() * 20)
 		}
 	},
