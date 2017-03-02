@@ -13,15 +13,14 @@ export default function ProductsTable({products, deleteProduct}){
       </tr>
       </thead>
       <tbody>
-			{products.map((product) => (
+      {products.map((product) => (
         <tr key={product.id}>
           <td>{product.name}</td>
           <td>${product.price}</td>
           <td><Link to={`/admin/${product.id}`} className="btn btn-primary">Edit</Link></td>
-					{/*This button would allow user to delete this item*/}
-          <td><a href="#" onClick={() => deleteProduct(product.id)} className="btn btn-primary">Delete</a></td>
+			    <td><a href="#" onClick={() => deleteProduct(product.id)} className="btn btn-primary">Delete</a></td>
         </tr>
-			))}
+      ))}
       </tbody>
     </table>
 	);
