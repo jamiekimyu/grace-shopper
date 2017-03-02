@@ -1,6 +1,7 @@
 //model needs record title
 const Sequelize = require('sequelize');
 const db = require('APP/db');
+const Product = require('./product');
 
 const Record = db.define('record', {
 	title: {
@@ -19,6 +20,12 @@ const Record = db.define('record', {
 		type: Sequelize.STRING,
 		allowNull: false
 	}
-}, {});
+}, {
+	defaultScope: {
+		include: [
+			{ model: Product}
+		]
+	}
+});
 
 module.exports = Record;
