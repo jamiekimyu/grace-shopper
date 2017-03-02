@@ -15,7 +15,7 @@ import {Vynl} from './components/Vynl';
 import {getRecords} from './reducers/records';
 
 const onRecordsEnter = function () {
-  store.dispatch(getRecords());
+	store.dispatch(getRecords());
 };
 
 render(

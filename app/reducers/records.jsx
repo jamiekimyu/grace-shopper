@@ -3,18 +3,18 @@ import axios from 'axios';
 /* ACTION CREATORS */
 const RECEIVE_RECORDS = 'RECEIVE_RECORDS';
 const receiveRecords = records => ({
-  type: RECEIVE_RECORDS,
-  records
+	type: RECEIVE_RECORDS,
+	records
 });
 
 export const getRecords = () => {
 
-  return dispatch => {
-    return axios.get('/api/records')
+	return dispatch => {
+		return axios.get('/api/records')
       .then(response => {
-        dispatch(receiveRecords(response.data));
-      });
-    };
+	dispatch(receiveRecords(response.data));
+});
+	};
 
 };
 
@@ -25,19 +25,19 @@ export const getRecords = () => {
 
 const recordReducer = (state = [], action) => {
 
-  const newState = Object.assign({}, state);
+	const newState = Object.assign({}, state);
 
-  switch (action.type) {
+	switch (action.type) {
 
-    case RECEIVE_RECORDS:
-      return action.records
+	case RECEIVE_RECORDS:
+		return action.records;
       //newState.records = action.records;
       //break;
 
-    default:
-      return state;
+	default:
+		return state;
 
-  }
+	}
 
   //return newState;
 
