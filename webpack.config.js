@@ -23,7 +23,7 @@ module.exports = {
     'cheap-module-eval-source-map' :
     'source-map',
 	resolve: {
-		extensions: ['.js', '.jsx', '.json', '*']
+		extensions: ['.js', '/index.js', '.jsx', '/index.jsx', '.json', '*']
 	},
 	module: {
 		rules: [{
