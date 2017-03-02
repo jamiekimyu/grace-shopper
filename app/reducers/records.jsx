@@ -1,8 +1,9 @@
 import axios from 'axios';
 
 /* ACTION CREATORS */
+const RECEIVE_RECORDS = 'RECEIVE_RECORDS';
 const receiveRecords = records => ({
-  type: 'RECEIVE_RECORDS',
+  type: RECEIVE_RECORDS,
   records
 });
 
@@ -18,26 +19,27 @@ export const getRecords = () => {
 };
 
 /* REDUCER */
-const initialState = {
-  records: []
-};
+// const initialState = {
+//   records: []
+// };
 
-const recordReducer = (state = initialState, action) => {
+const recordReducer = (state = [], action) => {
 
   const newState = Object.assign({}, state);
 
   switch (action.type) {
 
     case RECEIVE_RECORDS:
-      newState.records = action.records;
-      break;
+      return action.records
+      //newState.records = action.records;
+      //break;
 
     default:
       return state;
 
   }
 
-  return newState;
+  //return newState;
 
 };
 

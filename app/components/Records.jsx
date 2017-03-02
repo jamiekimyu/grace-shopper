@@ -2,9 +2,9 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
 
-export const Records = () => (
+export const Records = ({records}) => (
   <div className="container-fluid">
-
+  {JSON.stringify(records)}
     <div className="row">
       <div className="col-md-2 productDisplay">
         <h4>Title</h4>
@@ -26,12 +26,7 @@ export const Records = () => (
 
 );
 
-const mapStateToProps = (state) => {
-  console.log(state)
-  return {
-    records: state.records
-  };
-};
+const mapStateToProps = ({records}) => ({records});
 
 const mapDispatchToProps = () => ({});
 
