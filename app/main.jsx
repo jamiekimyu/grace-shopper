@@ -22,7 +22,7 @@ render(
 				<Route path="/services" component={Services} />
 				<Route path="/records" component={Records} />
 				<Route path="/equipment" component={Equipment} />
-				<Route path="/admin" component={Admin} onEnter={() => store.dispatch(fetch())} />
+				<Route path="/admin(/:id)" component={Admin} onEnter={() => store.dispatch(fetch())} />
 			</Route>
 		</Router>
 	</Provider>,

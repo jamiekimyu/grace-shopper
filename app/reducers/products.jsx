@@ -1,9 +1,11 @@
 import axios from 'axios';
 
-const reducer = (state = null, action) => {
+const reducer = (state = [], action) => {
 	switch (action.type) {
 	case SET_ALL:
 		return action.products;
+	case DELETE_ONE:
+		return state.filter((product) => product.id !== action.productId);
 	default:
 		return state;
 	}
@@ -13,6 +15,12 @@ const SET_ALL = 'PRODUCTS_SET_ALL';
 export const set = (products) => ({
 	type: SET_ALL,
 	products
+});
+
+const DELETE_ONE = 'PRODUCTS_DELETE_ONE';
+export const deleteOne = (productId) => ({
+	type: DELETE_ONE,
+	productId
 });
 
 export const fetch = () => (
@@ -26,19 +34,14 @@ export const fetch = () => (
 	)
 );
 
-export const logout = () =>
-	dispatch =>
-		axios.post('/api/auth/logout')
-			.then(() => dispatch(whoami()))
-			.catch(() => dispatch(whoami()));
-
-export const whoami = () =>
-	dispatch =>
-		axios.get('/api/auth/whoami')
-			.then(response => {
-				const user = response.data;
-				dispatch(authenticated(user));
+export const deleteProduct = (productId) => (
+	(dispatch) => (
+		axios.delete(`/api/products/${productId}`)
+			.then(() => dispatch(deleteOne(productId)))
+			.catch(() => {
+				console.error('Failed to delete product', productId);
 			})
-			.catch(failed => dispatch(authenticated(null)));
+	)
+);
 
 export default reducer;

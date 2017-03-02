@@ -1,40 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
+import ProductsTable from './ProductsTable';
+import {deleteProduct} from '../../reducers/products';
 
-export const Admin = ({products}) => (
+export const Admin = ({products, current, deleteProduct}) => (
   <div>
-    {JSON.stringify(products)}
-    <table className="admin-table">
-      <thead>
-        <tr>
-          <th>
-            Name
-          </th>
-          <th>
-            Price
-          </th>
-          <th>
-            Edit
-          </th>
-          <th>
-            Delete
-          </th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>
-            Fuzzy Socks
-          </td>
-          <td>$27.98</td>
-          {/*This button would populate the form with this item and allow user to edit it*/}
-          <td><Link className="btn btn-primary">Edit</Link></td>
-          {/*This button would allow user to delete this item*/}
-          <td><Link className="btn btn-primary">Delete</Link></td>
-        </tr>
-      </tbody>
-    </table>
+    {JSON.stringify(current)}
+    <ProductsTable products={products} deleteProduct={deleteProduct} />
+    <hr />
     <form>
       <div className="form-group">
         <label htmlFor="admin-type">Type</label>
@@ -90,11 +64,18 @@ export const Admin = ({products}) => (
   </div>
 );
 
-const mapStateToProps = ({products}) => ({
-  products
+const mapStateToProps = ({products}, {params}) => ({
+  products,
+  current: (
+    params.id !== undefined ?
+     products.find((product) => product.id == params.id) :
+      {}
+  )
 });
 
-const mapDispatchToProps = () => ({});
+const mapDispatchToProps = (dispatch) => ({
+  deleteProduct: (productId) => dispatch(deleteProduct(productId))
+});
 
 export default connect(
   mapStateToProps,

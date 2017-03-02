@@ -30,11 +30,11 @@ const seedRecords = () => db.Promise.each([
 		releaseDate: 'May 28, 1997',
 		genre: 'Hipster',
 		product: {
-			name: 'In the Aeroplane Over the Sea / Neutral Milk Hotel',
+			name: 'OK Computer / Radiohead',
 			price: Math.floor(Math.random() * 100000) / 100,
 			description: 'CDs are so 2000',
 			primaryCategory: 'Record',
-			photo: 'albums/neutralmilkhotel-intheaeroplaneover.jpg',
+			photo: 'albums/radiohead-okcomputer.jpg',
 			quantity: Math.floor(Math.random() * 20)
 		}
 	},
