@@ -70,34 +70,34 @@ export default class Form extends Component {
 	render() {
 		return (
 			<form onSubmit={this.handleSubmit}>
-	      <div className="form-group">
-	        <label htmlFor="admin-type">Type</label>
-	        <select
+				<div className="form-group">
+					<label htmlFor="admin-type">Type</label>
+					<select
 						className="form-control"
 						id="admin-type"
 						value={this.state.primaryCategory}
 						onChange={this.handleChange}
 					>
-	          <option>Service</option>
-	          <option>Record</option>
-	          <option>Equipment</option>
-	        </select>
-	      </div>
+						<option>Service</option>
+						<option>Record</option>
+						<option>Equipment</option>
+					</select>
+				</div>
 
-	      <div className="form-group">
-	        <label htmlFor="admin-name">Name</label>
-	        <input
+				<div className="form-group">
+					<label htmlFor="admin-name">Name</label>
+					<input
 						type="text"
 						className="form-control"
 						id="admin-name"
 						value={this.state.name}
 						onChange={this.handleChange}
 					/>
-	      </div>
+				</div>
 
-	      <div className="form-group">
-	        <label htmlFor="admin-price">Price</label>
-	        <input
+				<div className="form-group">
+					<label htmlFor="admin-price">Price</label>
+					<input
 						type="number"
 						step=".01"
 						min="0"
@@ -106,11 +106,11 @@ export default class Form extends Component {
 						value={this.state.price}
 						onChange={this.handleChange}
 					/>
-	      </div>
+				</div>
 
 				<div className="form-group">
-	        <label htmlFor="admin-quantity">Quantity</label>
-	        <input
+					<label htmlFor="admin-quantity">Quantity</label>
+					<input
 						type="number"
 						step="1"
 						min="1"
@@ -119,85 +119,85 @@ export default class Form extends Component {
 						value={this.state.quantity}
 						onChange={this.handleChange}
 					/>
-	      </div>
+				</div>
 
-	      <div className="form-group">
-	        <label htmlFor="admin-description">Description</label>
-	        <textarea
+				<div className="form-group">
+					<label htmlFor="admin-description">Description</label>
+					<textarea
 						className="form-control"
 						id="admin-description"
 						value={this.state.description}
 						onChange={this.handleChange}
 					/>
-	      </div>
+				</div>
 
-	      <div className="form-group">
-	        <label htmlFor="admin-photo">Photo URL</label>
-	        <input
+				<div className="form-group">
+					<label htmlFor="admin-photo">Photo URL</label>
+					<input
 						type="text"
 						className="form-control"
 						id="admin-photo"
 						value={this.state.photo}
 						onChange={this.handleChange}
 					/>
-	      </div>
+				</div>
 
-	      <div className="panel panel-default">
-	        <div className="panel-heading">
-	          Record Information
-	        </div>
-	        <div className="panel-body">
-	          <div className="form-group">
-	            <label htmlFor="admin-record-artist">Artist</label>
-	            <input
+				<div className="panel panel-default">
+					<div className="panel-heading">
+						Record Information
+					</div>
+					<div className="panel-body">
+						<div className="form-group">
+							<label htmlFor="admin-record-artist">Artist</label>
+							<input
 								type="text"
 								className="form-control"
 								id="admin-record-artist"
 								value={this.state.record.artist}
 								onChange={this.handleRecordChange}
 							/>
-	          </div>
+						</div>
 
 						<div className="form-group">
-	            <label htmlFor="admin-record-title">Title</label>
-	            <input
+							<label htmlFor="admin-record-title">Title</label>
+							<input
 								type="text"
 								className="form-control"
 								id="admin-record-title"
 								value={this.state.record.title}
 								onChange={this.handleRecordChange}
 							/>
-	          </div>
+						</div>
 
-	          <div className="form-group">
-	            <label htmlFor="admin-record-release-date">Release Date</label>
-	            <input
+						<div className="form-group">
+							<label htmlFor="admin-record-release-date">Release Date</label>
+							<input
 								type="text"
 								className="form-control"
 								id="admin-record-release-date"
 								value={this.state.record.releaseDate}
 								onChange={this.handleRecordChange}
 							/>
-	          </div>
+						</div>
 
-	          <div className="form-group">
-	            <label htmlFor="admin-record-genre">Genre</label>
-	            <input
+						<div className="form-group">
+							<label htmlFor="admin-record-genre">Genre</label>
+							<input
 								type="text"
 								className="form-control"
 								id="admin-record-genre"
 								value={this.state.record.genre}
 								onChange={this.handleRecordChange}
 							/>
-	          </div>
-	        </div>
-	      </div>
+						</div>
+					</div>
+				</div>
 				<input
 					type="submit"
 					className="btn btn-primary"
 					value="Submit"
 				/>
-	    </form>
+			</form>
 		);
 	}
 }
