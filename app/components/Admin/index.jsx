@@ -65,8 +65,8 @@ export const Admin = ({products, current, deleteProduct}) => (
 );
 
 const mapStateToProps = ({products}, {params}) => ({
-  products,
-  current: (
+	products,
+	current: (
     params.id !== undefined ?
      products.find((product) => product.id == params.id) :
       {}
@@ -74,7 +74,7 @@ const mapStateToProps = ({products}, {params}) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  deleteProduct: (productId) => dispatch(deleteProduct(productId))
+	deleteProduct: (productId) => dispatch(deleteProduct(productId))
 });
 
 export default connect(

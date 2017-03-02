@@ -2,7 +2,7 @@ import React from 'react';
 import {Link} from 'react-router';
 
 export default function ProductsTable({products, deleteProduct}){
-  return (
+	return (
     <table className="admin-table">
       <thead>
         <tr>
@@ -34,5 +34,5 @@ export default function ProductsTable({products, deleteProduct}){
         ))}
       </tbody>
     </table>
-  );
+	);
 }
