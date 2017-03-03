@@ -20,7 +20,7 @@ const seedRecords = () => db.Promise.each([
 			price: Math.floor(Math.random() * 100000) / 100,
 			description: 'CDs are so 2000',
 			primaryCategory: 'Record',
-			photo: 'albums/neutralmilkhotel-intheaeroplaneover.jpg',
+			photo: '/albums/neutralmilkhotel-intheaeroplaneover.jpg',
 			quantity: Math.floor(Math.random() * 20)
 		}
 	},
@@ -34,7 +34,7 @@ const seedRecords = () => db.Promise.each([
 			price: Math.floor(Math.random() * 100000) / 100,
 			description: 'CDs are so 2000',
 			primaryCategory: 'Record',
-			photo: 'albums/radiohead-okcomputer.jpg',
+			photo: '/albums/radiohead-okcomputer.jpg',
 			quantity: Math.floor(Math.random() * 20)
 		}
 	},
@@ -48,7 +48,7 @@ const seedRecords = () => db.Promise.each([
 			price: Math.floor(Math.random() * 100000) / 100,
 			description: 'CDs are so 2000',
 			primaryCategory: 'Record',
-			photo: 'albums/arcadefire-funeral.jpg',
+			photo: '/albums/arcadefire-funeral.jpg',
 			quantity: Math.floor(Math.random() * 20)
 		}
 	},
@@ -62,7 +62,7 @@ const seedRecords = () => db.Promise.each([
 			price: Math.floor(Math.random() * 100000) / 100,
 			description: 'CDs are so 2000',
 			primaryCategory: 'Record',
-			photo: 'albums/arcticmonkeys-blacktreacle.jpg',
+			photo: '/albums/arcticmonkeys-blacktreacle.jpg',
 			quantity: Math.floor(Math.random() * 20)
 		}
 	},
@@ -76,7 +76,7 @@ const seedRecords = () => db.Promise.each([
 			price: Math.floor(Math.random() * 100000) / 100,
 			description: 'CDs are so 2000',
 			primaryCategory: 'Record',
-			photo: 'albums/thedearhunter-migrant.jpg',
+			photo: '/albums/thedearhunter-migrant.jpg',
 			quantity: Math.floor(Math.random() * 20)
 		}
 	},
@@ -90,7 +90,7 @@ const seedRecords = () => db.Promise.each([
 			price: Math.floor(Math.random() * 100000) / 100,
 			description: 'CDs are so 2000',
 			primaryCategory: 'Record',
-			photo: 'albums/lcdsoundsystem-someonegreat.jpg',
+			photo: '/albums/lcdsoundsystem-someonegreat.jpg',
 			quantity: Math.floor(Math.random() * 20)
 		}
 	},
@@ -104,7 +104,7 @@ const seedRecords = () => db.Promise.each([
 			price: Math.floor(Math.random() * 100000) / 100,
 			description: 'CDs are so 2000',
 			primaryCategory: 'Record',
-			photo: 'albums/thestrokes-comedownmachine.jpg',
+			photo: '/albums/thestrokes-comedownmachine.jpg',
 			quantity: Math.floor(Math.random() * 20)
 		}
 	},
@@ -118,7 +118,7 @@ const seedRecords = () => db.Promise.each([
 			price: Math.floor(Math.random() * 100000) / 100,
 			description: 'CDs are so 2000',
 			primaryCategory: 'Record',
-			photo: 'albums/modestmouse-nightonthesun.jpg',
+			photo: '/albums/modestmouse-nightonthesun.jpg',
 			quantity: Math.floor(Math.random() * 20)
 		}
 	},
@@ -132,7 +132,7 @@ const seedRecords = () => db.Promise.each([
 			price: Math.floor(Math.random() * 100000) / 100,
 			description: 'CDs are so 2000',
 			primaryCategory: 'Record',
-			photo: 'albums/daftpunk-harderbetterfasterst.jpg',
+			photo: '/albums/daftpunk-harderbetterfasterst.jpg',
 			quantity: Math.floor(Math.random() * 20)
 		}
 	},
@@ -146,7 +146,7 @@ const seedRecords = () => db.Promise.each([
 			price: Math.floor(Math.random() * 100000) / 100,
 			description: 'CDs are so 2000',
 			primaryCategory: 'Record',
-			photo: 'albums/thedecemberists-hecranewife.jpg',
+			photo: '/albums/thedecemberists-hecranewife.jpg',
 			quantity: Math.floor(Math.random() * 20)
 		}
 	},
