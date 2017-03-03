@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
 
-export const Record = ({record, product}) => (
+export const Record = ({record}) => (
 	<div className="container-fluid">
 		<h4>Record</h4>
 		<img src={record.product && record.product.photo} className="img-thumbnail" />
@@ -13,8 +13,7 @@ export const Record = ({record, product}) => (
 );
 
 const mapStateToProps = ({record}) => ({
-	record,
-	//product: record.product || {}
+	record
 });
 
 const mapDispatchToProps = () => ({});
