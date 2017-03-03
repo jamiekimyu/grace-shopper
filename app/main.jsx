@@ -12,7 +12,7 @@ import Record from './components/Record';
 import Equipment from './components/Equipment';
 import Admin from './components/Admin';
 import {Vynl} from './components/Vynl';
-
+import {fetch} from './reducers/products';
 import {getRecords} from './reducers/records';
 import {getRecord} from './reducers/record';
 
@@ -26,18 +26,18 @@ const onRecordEnter = function (nextRouterState) {
 };
 
 render(
-  <Provider store={store}>
-    <Router history={browserHistory}>
-      <Route path="/" component={Vynl}>
-        <IndexRedirect to="/home" />
-        <Route path="/home" component={Home} />
-        <Route path="/services" component={Services} />
-        <Route path="/records" component={Records} onEnter={onRecordsEnter} />
-        <Route path="/records/:recordId" component={Record} onEnter={onRecordEnter}/>
-        <Route path="/equipment" component={Equipment} />
-        <Route path="/admin" component={Admin} />
-      </Route>
-    </Router>
-  </Provider>,
-  document.getElementById('main')
+	<Provider store={store}>
+		<Router history={browserHistory}>
+			<Route path="/" component={Vynl}>
+				<IndexRedirect to="/home" />
+				<Route path="/home" component={Home} />
+				<Route path="/services" component={Services} />
+				<Route path="/records" component={Records} onEnter={onRecordsEnter} />
+				<Route path="/records/:recordId" component={Record} onEnter={onRecordEnter}/>
+				<Route path="/equipment" component={Equipment} />
+				<Route path="/admin(/:id)" component={Admin} onEnter={() => store.dispatch(fetch())} />
+			</Route>
+		</Router>
+	</Provider>,
+	document.getElementById('main')
 );

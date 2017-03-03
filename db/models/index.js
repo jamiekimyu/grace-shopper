@@ -15,8 +15,8 @@ const OrderItem = require('./orderItem');
 OAuth.belongsTo(User);
 User.hasOne(OAuth);
 
-Product.hasOne(Record);
-Record.belongsTo(Product);
+Product.hasOne(Record, {onDelete: 'CASCADE'});
+Record.belongsTo(Product, {onDelete: 'CASCADE'});
 
 Order.belongsTo(User);
 User.hasMany(Order);
