@@ -5,11 +5,19 @@ branches:
   only:
     - master
 
+env:
+  - DATABASE_URL=postgres://travis@localhost/vynl_test
+
 
 before_script:
-  - psql -c 'create database vynl_test;' -U postgres
+  - psql -c 'create database vynl_test;' -U travis
 
 services:
   - postgresql
 
-script: npm run ci && npm run test
+addons:
+  postgresql: "9.4"
+
+script:
+  - npm run ci
+  - npm run test
