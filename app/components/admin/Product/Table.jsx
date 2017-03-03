@@ -17,7 +17,7 @@ export default function ProductsTable({products, deleteProduct}){
         <tr key={product.id}>
           <td>{product.name}</td>
           <td>${product.price}</td>
-          <td><Link to={`/admin/${product.id}`} className="btn btn-primary">Edit</Link></td>
+          <td><Link to={`/admin/product/${product.id}`} className="btn btn-primary">Edit</Link></td>
 			    <td><a href="#" onClick={() => deleteProduct(product.id)} className="btn btn-primary">Delete</a></td>
         </tr>
       ))}
