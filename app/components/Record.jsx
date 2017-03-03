@@ -3,12 +3,12 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router';
 
 export const Record = ({record, product}) => (
-  <div className="container-fluid">
-    <h4>Record</h4>
+	<div className="container-fluid">
+		<h4>Record</h4>
 		<img src={record.product && record.product.photo} className="img-thumbnail" />
 		<h1>Artist: {record.artist}</h1>
 		<h1>Album: {record.title}</h1>
-  </div>
+	</div>
 
 );
 
@@ -20,6 +20,6 @@ const mapStateToProps = ({record}) => ({
 const mapDispatchToProps = () => ({});
 
 export default connect(
-  mapStateToProps,
-  mapDispatchToProps
+	mapStateToProps,
+	mapDispatchToProps
 )(Record);
