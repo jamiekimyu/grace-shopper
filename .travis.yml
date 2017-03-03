@@ -2,4 +2,10 @@ language: node_js
 node_js:
   - "6"
 
-script: npm run ci
+before_script:
+  - psql -c 'create database vynl_test;' -U postgres
+
+services:
+  - postgresql
+
+script: npm run ci && npm run test
