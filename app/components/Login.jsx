@@ -1,11 +1,10 @@
 import React from 'react';
 
-export const Login = ({ login }) => (
-  <form onSubmit={evt => {
-	console.log(document.activeElement.id);
+export const Login = ({ login, register }) => (
+  <form onSubmit={(evt) => {
 	evt.preventDefault();
 	if (document.activeElement.id === 'register'){
-		// reducer
+		register(evt.target.username.value, evt.target.password.value);
 	} else {
 		login(evt.target.username.value, evt.target.password.value);
 	}
@@ -17,10 +16,10 @@ export const Login = ({ login }) => (
   </form>
 );
 
-import {login} from 'APP/app/reducers/auth';
+import {login, register} from 'APP/app/reducers/auth';
 import {connect} from 'react-redux';
 
 export default connect(
   state => ({}),
-  {login}
+  {login, register}
 )(Login);
