@@ -21,8 +21,8 @@ const onRecordsEnter = function () {
 };
 
 const onRecordEnter = function (nextRouterState) {
-  const recordId = nextRouterState.params.recordId;
-  store.dispatch(getRecord(recordId));
+	const recordId = nextRouterState.params.recordId;
+	store.dispatch(getRecord(recordId));
 };
 
 render(
