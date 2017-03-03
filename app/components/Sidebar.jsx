@@ -12,8 +12,8 @@ export const Sidebar = ({ isAdmin }) => (
   </ul>
 );
 
-const mapStateToProps = () => ({
-	isAdmin: true
+const mapStateToProps = ({auth}) => ({
+	isAdmin: auth && auth.isAdmin
 });
 
 const mapDispatchToProps = () => ({
