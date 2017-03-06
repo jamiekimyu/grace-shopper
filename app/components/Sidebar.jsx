@@ -8,12 +8,12 @@ export const Sidebar = ({ isAdmin }) => (
     <li><Link to="/records">Records</Link></li>
     <li><Link to="/equipment">Equipment</Link></li>
     { isAdmin ? ( <li><hr /></li> ) : null }
-    { isAdmin ? ( <li><Link to="/admin">Admin</Link></li> ) : null }
+    { isAdmin ? ( <li><Link to="/admin/product">Admin Products Control Panel</Link></li> ) : null }
   </ul>
 );
 
-const mapStateToProps = () => ({
-	isAdmin: true
+const mapStateToProps = ({auth}) => ({
+	isAdmin: auth && auth.isAdmin
 });
 
 const mapDispatchToProps = () => ({

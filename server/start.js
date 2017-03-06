@@ -5,6 +5,7 @@ const bodyParser = require('body-parser');
 const {resolve} = require('path');
 const passport = require('passport');
 const PrettyError = require('pretty-error');
+const {reqAdmin} = require('./auth.filters');
 // PrettyError docs: https://www.npmjs.com/package/pretty-error
 
 // Bones has a symlink from node_modules/APP to the root of the app.
@@ -53,6 +54,7 @@ module.exports = app
   .use('/api', require('./api'))
 
   // Send index.html for anything else.
+	.all('/admin', reqAdmin('You must be an admin to view that'))
   .get('/*', (_, res) => res.sendFile(resolve(__dirname, '..', 'public', 'index.html')))
 
   .use((err, req, res, next) => {

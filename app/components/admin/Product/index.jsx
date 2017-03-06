@@ -1,13 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
-import ProductsTable from './ProductsTable';
-import {deleteProduct, changeProduct, createProduct} from '../../reducers/products';
+import Table from './Table';
+import {deleteProduct, changeProduct, createProduct} from '../../../reducers/products';
 import Form from './Form';
 
 export const Admin = ({products, current, deleteProductProp, handleSubmit}) => (
   <div>
-    <ProductsTable products={products} deleteProduct={deleteProductProp} />
+    <Table products={products} deleteProduct={deleteProductProp} />
     <hr />
     <Form current={current} handleSubmit={handleSubmit} />
   </div>

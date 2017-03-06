@@ -3,6 +3,7 @@
 const db = require('APP/db');
 const Product = db.model('product');
 const Record = db.model('record');
+const {reqAdmin} = require('./auth.filters');
 
 module.exports = require('express').Router()
 	.get('/', (req, res, next) => (
@@ -10,7 +11,7 @@ module.exports = require('express').Router()
 			.then((product) => res.json(product))
 			.catch(next)
 	))
-	.delete('/:id', (req, res, next) => (
+	.delete('/:id',	reqAdmin('only admins can delete products'), (req, res, next) => (
 		Product.destroy({
 			where: {
 				id: req.params.id
@@ -19,7 +20,7 @@ module.exports = require('express').Router()
 		.then(() => res.sendStatus(204))
 		.catch(next)
 	))
-	.put('/:id', (req, res, next) => (
+	.put('/:id', reqAdmin('only admins can update products'), (req, res, next) => (
 		Product.update(
 			req.body,
 			{
@@ -32,7 +33,7 @@ module.exports = require('express').Router()
 		.then((result) => res.json(result[1][0]))
 		.catch(next)
 	))
-	.post('/', (req, res, next) => (
+	.post('/', reqAdmin('only admins can create products'), (req, res, next) => (
 		Product.create(
 			req.body,
 			{
