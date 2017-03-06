@@ -3,12 +3,12 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import Table from './Table';
 // Replace with user reducers
-//import {deleteProduct, changeProduct, createProduct} from '../../../reducers/products';
+import {deleteUser, changeUser, createUser} from '../../../reducers/users';
 import Form from './Form';
 
 export const User = ({users, current, deleteUserProp, handleSubmit}) => (
   <div>
-    <Table users={users} deleteUserProp={deleteUserProp} />
+    <Table users={users} deleteUser={deleteUserProp} />
     <hr />
     <Form current={current} handleSubmit={handleSubmit} />
   </div>
@@ -24,11 +24,11 @@ const mapStateToProps = ({users}, {params}) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-	deleteProductProp: (userId) => dispatch(deleteProduct(userId)),
+	deleteUserProp: (userId) => dispatch(deleteUser(userId)),
 	handleSubmit: (userId, user) => (
 		userId ?
-		dispatch(changeProduct(userId, user)) :
-		dispatch(createProduct(user))
+		dispatch(changeUser(userId, user)) :
+		dispatch(createUser(user))
 	)
 });
 
