@@ -15,10 +15,17 @@ export const authenticated = user => ({
 
 export const login = (username, password) =>
   dispatch =>
-    axios.post('/api/auth/local/login',
+    axios.post('/api/auth/login/local',
       {username, password})
       .then(() => dispatch(whoami()))
       .catch(() => dispatch(whoami()));
+
+export const register = (username, password) =>
+	dispatch =>
+		axios.post('/api/users',
+			{name: username, email: username, password})
+			.then(() => dispatch(login(username, password)))
+			.catch(() => dispatch(whoami()));
 
 export const logout = () =>
   dispatch =>
