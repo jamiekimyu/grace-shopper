@@ -14,7 +14,7 @@ export const ShoppingCart = ({cart}) => (
       ))}
     </ol>
     <div className="container-fluid">
-      <Link className="btn btn-primary col-md-12">Checkout</Link>
+      <Link className="btn btn-primary col-md-12" to="/Checkout">Checkout</Link>
     </div>
   </div>
 );

@@ -13,6 +13,7 @@ import Equipment from './components/Equipment';
 import Product from './components/admin/Product';
 import User from './components/admin/User';
 import {Vynl} from './components/Vynl';
+import Checkout from './components/Checkout';
 import {fetch as fetchProducts} from './reducers/products';
 import {fetch as fetchUsers} from './reducers/users';
 import {getRecords} from './reducers/records';
@@ -50,6 +51,7 @@ render(
 				<Route path="/records" component={Records} onEnter={onRecordsEnter} />
 				<Route path="/records/:recordId" component={Record} onEnter={onRecordEnter} />
 				<Route path="/equipment" component={Equipment} />
+				<Route path="/checkout" component={Checkout} />
 				<Route path="/admin/product(/:id)" component={Product} onEnter={onAdminProductEnter} />
 				<Route path="/admin/user(/:id)" component={User} onEnter={onAdminUserEnter} />
 			</Route>
