@@ -5,7 +5,7 @@ import Table from './Table';
 import {deleteProduct, changeProduct, createProduct} from '../../../reducers/products';
 import Form from './Form';
 
-export const Admin = ({products, current, deleteProductProp, handleSubmit}) => (
+export const Product = ({products, current, deleteProductProp, handleSubmit}) => (
   <div>
     <Table products={products} deleteProduct={deleteProductProp} />
     <hr />
@@ -34,4 +34,4 @@ const mapDispatchToProps = (dispatch) => ({
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Admin);
+)(Product);

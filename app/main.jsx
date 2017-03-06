@@ -11,9 +11,11 @@ import Records from './components/Records';
 import Record from './components/Record';
 import Equipment from './components/Equipment';
 import Product from './components/admin/Product';
+import User from './components/admin/User';
 import {Vynl} from './components/Vynl';
 import Checkout from './components/Checkout';
-import {fetch} from './reducers/products';
+import {fetch as fetchProducts} from './reducers/products';
+import {fetch as fetchUsers} from './reducers/users';
 import {getRecords} from './reducers/records';
 import {getRecord} from './reducers/record';
 import {loadCart} from './reducers/cart';
@@ -27,8 +29,12 @@ const onRecordEnter = function (nextRouterState) {
 	store.dispatch(getRecord(recordId));
 };
 
-const onAdminEnter = function () {
-	store.dispatch(fetch());
+const onAdminProductEnter = function () {
+	store.dispatch(fetchProducts());
+};
+
+const onAdminUserEnter = function () {
+	store.dispatch(fetchUsers());
 };
 
 const onVynlEnter = function () {
@@ -45,8 +51,9 @@ render(
 				<Route path="/records" component={Records} onEnter={onRecordsEnter} />
 				<Route path="/records/:recordId" component={Record} onEnter={onRecordEnter} />
 				<Route path="/equipment" component={Equipment} />
-				<Route path="/admin/product(/:id)" component={Product} onEnter={onAdminEnter} />
 				<Route path="/checkout" component={Checkout} />
+				<Route path="/admin/product(/:id)" component={Product} onEnter={onAdminProductEnter} />
+				<Route path="/admin/user(/:id)" component={User} onEnter={onAdminUserEnter} />
 			</Route>
 		</Router>
 	</Provider>,

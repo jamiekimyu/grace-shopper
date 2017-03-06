@@ -15,6 +15,10 @@ export const Login = ({ login, register }) => (
 		<input name="password" type="password" placeholder="Password" className="form-control" />
 		<input type="submit" id="login" value="Login" className="btn btn-primary" />
 		<input type="submit" id="register" value="Register" className="btn btn-primary" />
+		<a href="http://localhost:1337/api/auth/login/google" className="btn btn-default">Login With Google</a>
+		<a href="http://localhost:1337/api/auth/login/facebook" className="btn btn-default">Login With Facebook</a>
+		<a href="http://localhost:1337/api/auth/login/github" className="btn btn-default">Login With Github</a>
+
 	</form>
 );
 
