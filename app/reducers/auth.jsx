@@ -1,5 +1,6 @@
 import axios from 'axios';
 
+//reducer
 const reducer = (state = null, action) => {
 	switch (action.type) {
 	case AUTHENTICATED:
@@ -8,11 +9,13 @@ const reducer = (state = null, action) => {
 	return state;
 };
 
+//action creator
 const AUTHENTICATED = 'AUTHENTICATED';
 export const authenticated = user => ({
 	type: AUTHENTICATED, user
 });
 
+//thunks
 export const login = (username, password) =>
   dispatch =>
     axios.post('/api/auth/login/local',
