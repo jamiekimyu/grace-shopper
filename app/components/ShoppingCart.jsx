@@ -9,7 +9,7 @@ export const ShoppingCart = ({cart}) => (
         <li key={idx} className="container-fluid">
           <div className="col-md-8">{item.product.name}</div>
           <div className="col-md-2 cart-price">${item.product.price}</div>
-          <input type="number" min="0" value={item.quantity} className="col-md-2 cart-quantity" />
+          <input type="number" min="0" value="1" className="col-md-2 cart-quantity" />
         </li>
       ))}
     </ol>
@@ -19,24 +19,7 @@ export const ShoppingCart = ({cart}) => (
   </div>
 );
 
-const mapStateToProps = () => ({
-	cart: [
-		{
-			quantity: 100,
-			product: {
-				name: 'Fuzzy Slippers',
-				price: 5
-			}
-		},
-		{
-			quantity: 100,
-			product: {
-				name: 'Hipster Vinyl Records',
-				price: 1000
-			}
-		}
-	]
-});
+const mapStateToProps = ({cart}) => ({cart});
 
 const mapDispatchToProps = () => ({});
 
