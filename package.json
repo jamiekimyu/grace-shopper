@@ -21,7 +21,8 @@
     "seed": "node db/seed.js",
     "deploy-heroku": "bin/deploy-heroku.sh",
     "lint": "eslint --ext js,jsx .",
-    "ci": "npm run lint"
+    "ci": "npm run lint",
+    "fix": "eslint --ext js,jsx . --fix"
   },
   "repository": {
     "type": "git",

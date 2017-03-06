@@ -28,7 +28,7 @@ export const addToCart = (product) => (
 export const loadCart = () => (
 	(dispatch) => {
 		let cartJSON = window.localStorage.getItem('cart');
-		dispatch(setCart(JSON.parse(cartJSON)));
+		dispatch(setCart(JSON.parse(cartJSON) || [] ));
 	}
 );
 
@@ -36,18 +36,18 @@ export const loadCart = () => (
 //REDUCER
 export default (state = [], action) => {
 
-	switch(action.type) {
-		case ADD_TO_CART:
-			return state.concat(action.product);
-	
-		case UPDATE_QUANTITY:
-			return /*need to update same-item quantity*/
+	switch (action.type) {
+	case ADD_TO_CART:
+		return state.concat(action.product);
 
-		case SET_CART:
-			return action.cart;
-		
-		default:
-			return state;
+	case UPDATE_QUANTITY:
+		return; /*need to update same-item quantity*/
+
+	case SET_CART:
+		return action.cart;
+
+	default:
+		return state;
 	}
 
 };

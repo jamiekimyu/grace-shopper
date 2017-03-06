@@ -22,8 +22,8 @@ const onRecordsEnter = function () {
 };
 
 const onRecordEnter = function (nextRouterState) {
-  const recordId = nextRouterState.params.recordId;
-  store.dispatch(getRecord(recordId));
+	const recordId = nextRouterState.params.recordId;
+	store.dispatch(getRecord(recordId));
 };
 
 const onVynlEnter = function () {
@@ -38,7 +38,7 @@ render(
 				<Route path="/home" component={Home} />
 				<Route path="/services" component={Services} />
 				<Route path="/records" component={Records} onEnter={onRecordsEnter} />
-				<Route path="/records/:recordId" component={Record} onEnter={onRecordEnter}/>
+				<Route path="/records/:recordId" component={Record} onEnter={onRecordEnter} />
 				<Route path="/equipment" component={Equipment} />
 				<Route path="/admin(/:id)" component={Admin} onEnter={() => store.dispatch(fetch())} />
 			</Route>
