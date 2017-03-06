@@ -40,7 +40,6 @@ export const loadCart = () => (
 );
 export const removeFromCart = (product) => (
 	(dispatch, getProps) => {
-		console.log('HERE');
 		dispatch(removeFromCartAction(product));
 		const {cart} = getProps();
 		window.localStorage.setItem('cart', JSON.stringify(cart));
@@ -55,15 +54,6 @@ export default (state = [], action) => {
 	case ADD_TO_CART:
 		return state.concat(action.product);
 
-  /*case REMOVE_FROM_CART:
-	 	let copiedArr = state.slice();
-		for(let i = 0; i < copiedArr.length; i++){
-			if(copiedArr[i].product.id === action.product.id){
-				copiedArr.splice(i, 1);
-			}
-		}
-		return copiedArr;
-		*/
 	case REMOVE_FROM_CART:
 		return state.filter((item) => (item.product.id !== action.product.id));
 
