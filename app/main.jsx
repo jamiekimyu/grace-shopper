@@ -26,6 +26,10 @@ const onRecordEnter = function (nextRouterState) {
 	store.dispatch(getRecord(recordId));
 };
 
+const onAdminEnter = function () {
+	store.dispatch(fetch());
+};
+
 const onVynlEnter = function () {
 	store.dispatch(loadCart());
 };
@@ -40,7 +44,7 @@ render(
 				<Route path="/records" component={Records} onEnter={onRecordsEnter} />
 				<Route path="/records/:recordId" component={Record} onEnter={onRecordEnter} />
 				<Route path="/equipment" component={Equipment} />
-				<Route path="/admin/product(/:id)" component={Product} onEnter={() => store.dispatch(fetch())} />
+				<Route path="/admin/product(/:id)" component={Product} onEnter={onAdminEnter} />
 			</Route>
 		</Router>
 	</Provider>,
