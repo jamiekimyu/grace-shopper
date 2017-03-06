@@ -11,7 +11,7 @@
   display: block;
 }
 
-.login-flyout, .cart-flyout {
+.login-flyout, .cart-flyout, .wishlist-flyout {
   right: -12px;
   width: 200px;
   background-color: white;
@@ -45,6 +45,34 @@
 }
 
 .cart-quantity {
+  padding-left: 3px;
+  padding-right: 3px;
+}
+
+.wishlist-flyout {
+  margin-top: 16px;
+  width: 400px;
+}
+
+.wishlist-count {
+  position: absolute;
+  background-color: #888;
+  color: white;
+  padding: 2px 0px 0px 0px;
+  border-radius: 50%;
+  font-size: 9px;
+  top: 9px;
+  left: 8px;
+  width: 14px;
+  text-align: center;
+}
+
+.wishlist-price {
+  padding-left: 3px;
+  padding-right: 3px;
+}
+
+.wishlist-quantity {
   padding-left: 3px;
   padding-right: 3px;
 }
