@@ -7,32 +7,32 @@ import {deleteUser, changeUser, createUser} from '../../../reducers/users';
 import Form from './Form';
 
 export const User = ({users, current, deleteUserProp, handleSubmit}) => (
-  <div>
-    <Table users={users} deleteUser={deleteUserProp} />
-    <hr />
-    <Form current={current} handleSubmit={handleSubmit} />
-  </div>
+	<div>
+		<Table users={users} deleteUser={deleteUserProp} />
+		<hr />
+		<Form current={current} handleSubmit={handleSubmit} />
+	</div>
 );
 
 const mapStateToProps = ({users}, {params}) => ({
 	users,
 	current: (
-    params.id !== undefined ?
-	    users.find((user) => user.id == params.id) :
-      {}
-  )
+		params.id !== undefined ?
+			users.find((user) => user.id == params.id) :
+			{}
+	)
 });
 
 const mapDispatchToProps = (dispatch) => ({
 	deleteUserProp: (userId) => dispatch(deleteUser(userId)),
 	handleSubmit: (userId, user) => (
 		userId ?
-		dispatch(changeUser(userId, user)) :
-		dispatch(createUser(user))
+			dispatch(changeUser(userId, user)) :
+			dispatch(createUser(user))
 	)
 });
 
 export default connect(
-  mapStateToProps,
-  mapDispatchToProps
+	mapStateToProps,
+	mapDispatchToProps
 )(User);

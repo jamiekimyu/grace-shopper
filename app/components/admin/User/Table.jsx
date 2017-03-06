@@ -16,7 +16,7 @@ export default function Table({users, deleteUser}){
       </tr>
       </thead>
       <tbody>
-      {users.map((user) => (
+			{users.map((user) => (
         <tr key={user.id}>
           <td>{user.name}</td>
           <td>{user.email}</td>
@@ -24,9 +24,9 @@ export default function Table({users, deleteUser}){
           <td>{user.oauth ? user.oauth.provider : 'Internal'}</td>
           <td>{user.oauth ? '' : (<Link to={`/admin/user/${user.id}`} className="btn btn-primary">Reset Password</Link>)}</td>
           <td><Link to={`/admin/user/${user.id}`} className="btn btn-primary">Edit</Link></td>
-			    <td><a href="#" onClick={() => deleteUser(user.id)} className="btn btn-primary">Delete</a></td>
+          <td><a href="#" onClick={() => deleteUser(user.id)} className="btn btn-primary">Delete</a></td>
         </tr>
-      ))}
+			))}
       </tbody>
     </table>
 	);
