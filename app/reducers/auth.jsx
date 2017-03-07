@@ -10,7 +10,7 @@ const reducer = (state = null, action) => {
 };
 
 //action creator
-const AUTHENTICATED = 'AUTHENTICATED';
+export const AUTHENTICATED = 'AUTHENTICATED';
 export const authenticated = user => ({
 	type: AUTHENTICATED, user
 });
