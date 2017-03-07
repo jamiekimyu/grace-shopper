@@ -8,9 +8,9 @@ import ShoppingCart from './ShoppingCart';
 import WishList from './WishList';
 
 export const Header = connect(
-	({ auth }) => ({ user: auth })
+	({ auth, cart }) => ({ user: auth, cart })
 )(
-	({ user }) =>
+	({ user, cart }) =>
 		<nav className="navbar navbar-default">
 			<div className="container-fluid">
 				<div className="navbar-header">
@@ -28,7 +28,7 @@ export const Header = connect(
 					<li className="navbar-text">
 						<label htmlFor="cart-toggle">
 							<i className="glyphicon glyphicon-shopping-cart" />
-							<div className="cart-count">99</div>
+							<div className="cart-count">{cart.reduce((value, item) => value + (+item.quantity), 0)}</div>
 						</label>
 						<input id="cart-toggle" type="checkbox" className="toggle-checkbox" />
 						<div className="cart-flyout"><ShoppingCart /></div>

@@ -16,11 +16,13 @@ export default class Form extends Component {
 			'admin-record-artist': 'artist',
 			'admin-record-title': 'title',
 			'admin-record-release-date': 'releaseDate',
-			'admin-record-genre': 'genre'
+			'admin-record-genre': 'genre',
+			'admin-service-time': 'processingTime'
 		};
 
 		this.handleChange = this.handleChange.bind(this);
 		this.handleRecordChange = this.handleRecordChange.bind(this);
+		this.handleServiceChange = this.handleServiceChange.bind(this);
 		this.handleSubmit = this.handleSubmit.bind(this);
 	}
 
@@ -31,12 +33,13 @@ export default class Form extends Component {
 	createState(current) {
 		current = current || {};
 		const record = current.record || {};
+		const service = current.service || {};
 
 		return {
 			name: current.name,
 			price: current.price,
 			description: current.description,
-			primaryCategory: current.primaryCategory,
+			primaryCategory: current.primaryCategory || 'Record',
 			photo: current.photo,
 			quantity: current.quantity,
 			record: {
@@ -44,6 +47,9 @@ export default class Form extends Component {
 				artist: record.artist,
 				releaseDate: record.releaseDate,
 				genre: record.genre
+			},
+			service: {
+				processingTime: service.processingTime
 			}
 		};
 	}
@@ -56,7 +62,15 @@ export default class Form extends Component {
 
 	handleRecordChange(event) {
 		this.setState({
-			record: Object.apply({}, this.state.record, {
+			record: Object.assign({}, this.state.record, {
+				[this.idMap[event.target.id]]: event.target.value
+			})
+		});
+	}
+
+	handleServiceChange(event) {
+		this.setState({
+			service: Object.assign({}, this.state.service, {
 				[this.idMap[event.target.id]]: event.target.value
 			})
 		});
@@ -142,56 +156,76 @@ export default class Form extends Component {
 					/>
 				</div>
 
-				<div className="panel panel-default">
-					<div className="panel-heading">
-						Record Information
+				{ this.state.primaryCategory === 'Record' ? (
+					<div className="panel panel-default">
+						<div className="panel-heading">
+							Record Information
+						</div>
+						<div className="panel-body">
+							<div className="form-group">
+								<label htmlFor="admin-record-artist">Artist</label>
+								<input
+									type="text"
+									className="form-control"
+									id="admin-record-artist"
+									value={this.state.record.artist}
+									onChange={this.handleRecordChange}
+								/>
+							</div>
+
+							<div className="form-group">
+								<label htmlFor="admin-record-title">Title</label>
+								<input
+									type="text"
+									className="form-control"
+									id="admin-record-title"
+									value={this.state.record.title}
+									onChange={this.handleRecordChange}
+								/>
+							</div>
+
+							<div className="form-group">
+								<label htmlFor="admin-record-release-date">Release Date</label>
+								<input
+									type="text"
+									className="form-control"
+									id="admin-record-release-date"
+									value={this.state.record.releaseDate}
+									onChange={this.handleRecordChange}
+								/>
+							</div>
+
+							<div className="form-group">
+								<label htmlFor="admin-record-genre">Genre</label>
+								<input
+									type="text"
+									className="form-control"
+									id="admin-record-genre"
+									value={this.state.record.genre}
+									onChange={this.handleRecordChange}
+								/>
+							</div>
+						</div>
 					</div>
-					<div className="panel-body">
-						<div className="form-group">
-							<label htmlFor="admin-record-artist">Artist</label>
-							<input
-								type="text"
-								className="form-control"
-								id="admin-record-artist"
-								value={this.state.record.artist}
-								onChange={this.handleRecordChange}
-							/>
+				) : this.state.primaryCategory === 'Service' ? (
+					<div className="panel panel-default">
+						<div className="panel-heading">
+							Service Information
 						</div>
-
-						<div className="form-group">
-							<label htmlFor="admin-record-title">Title</label>
-							<input
-								type="text"
-								className="form-control"
-								id="admin-record-title"
-								value={this.state.record.title}
-								onChange={this.handleRecordChange}
-							/>
-						</div>
-
-						<div className="form-group">
-							<label htmlFor="admin-record-release-date">Release Date</label>
-							<input
-								type="text"
-								className="form-control"
-								id="admin-record-release-date"
-								value={this.state.record.releaseDate}
-								onChange={this.handleRecordChange}
-							/>
-						</div>
-
-						<div className="form-group">
-							<label htmlFor="admin-record-genre">Genre</label>
-							<input
-								type="text"
-								className="form-control"
-								id="admin-record-genre"
-								value={this.state.record.genre}
-								onChange={this.handleRecordChange}
-							/>
+						<div className="panel-body">
+							<div className="form-group">
+								<label htmlFor="admin-service-time">Processing Time</label>
+								<input
+									type="text"
+									className="form-control"
+									id="admin-service-time"
+									value={this.state.service.processingTime}
+									onChange={this.handleServiceChange}
+								/>
+							</div>
 						</div>
 					</div>
-				</div>
+				) : '' }
 				<input
 					type="submit"
 					className="btn btn-primary"

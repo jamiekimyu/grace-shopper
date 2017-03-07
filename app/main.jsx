@@ -7,6 +7,7 @@ import {connect, Provider} from 'react-redux';
 import store from './store';
 import Home from './components/Home';
 import Services from './components/Services';
+import Service from './components/Service';
 import Records from './components/Records';
 import Record from './components/Record';
 import Equipment from './components/Equipment';
@@ -18,6 +19,8 @@ import Checkout from './components/Checkout';
 import User from './components/User';
 import {fetch as fetchProducts} from './reducers/products';
 import {fetch as fetchUsers} from './reducers/users';
+import {getServices} from './reducers/services';
+import {getService} from './reducers/service';
 import {getRecords} from './reducers/records';
 import {getRecord} from './reducers/record';
 import {loadCart} from './reducers/cart';
@@ -25,10 +28,17 @@ import {loadCart} from './reducers/cart';
 const onRecordsEnter = function () {
 	store.dispatch(getRecords());
 };
+const onServicesEnter = function () {
+	store.dispatch(getServices());
+};
 
 const onRecordEnter = function (nextRouterState) {
 	const recordId = nextRouterState.params.recordId;
 	store.dispatch(getRecord(recordId));
+};
+const onServiceEnter = function (nextRouterState) {
+	const serviceId = nextRouterState.params.serviceId;
+	store.dispatch(getService(serviceId));
 };
 
 const onAdminProductEnter = function () {
@@ -50,7 +60,8 @@ render(
 				<IndexRedirect to="/home" />
 				<Route path="/home" component={Home} />
 				<Route path="/thankyou" component={ThankYou} />
-				<Route path="/services" component={Services} />
+				<Route path="/services/:serviceId" component={Service} onEnter={onServiceEnter} />
+				<Route path="/services" component={Services} onEnter={onServicesEnter} />
 				<Route path="/user" component={User} />
 				<Route path="/records" component={Records} onEnter={onRecordsEnter} />
 				<Route path="/records/:recordId" component={Record} onEnter={onRecordEnter} />
