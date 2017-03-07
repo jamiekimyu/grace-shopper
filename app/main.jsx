@@ -24,6 +24,7 @@ import {getService} from './reducers/service';
 import {getRecords} from './reducers/records';
 import {getRecord} from './reducers/record';
 import {loadCart} from './reducers/cart';
+import {getUserOrders} from './reducers/userOrders';
 
 const onRecordsEnter = function () {
 	store.dispatch(getRecords());
@@ -53,6 +54,10 @@ const onVynlEnter = function () {
 	store.dispatch(loadCart());
 };
 
+const onUserEnter = function () {
+	store.dispatch(getUserOrders());
+};
+
 render(
 	<Provider store={store}>
 		<Router history={browserHistory}>
@@ -62,7 +67,7 @@ render(
 				<Route path="/thankyou" component={ThankYou} />
 				<Route path="/services/:serviceId" component={Service} onEnter={onServiceEnter} />
 				<Route path="/services" component={Services} onEnter={onServicesEnter} />
-				<Route path="/user" component={User} />
+				<Route path="/user" component={User} onEnter={onUserEnter} />
 				<Route path="/records" component={Records} onEnter={onRecordsEnter} />
 				<Route path="/records/:recordId" component={Record} onEnter={onRecordEnter} />
 				<Route path="/equipment" component={Equipment} />
