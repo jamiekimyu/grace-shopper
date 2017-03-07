@@ -7,14 +7,15 @@ import {connect, Provider} from 'react-redux';
 import store from './store';
 import Home from './components/Home';
 import Services from './components/Services';
-import Records from './components/Records';
-import Record from './components/Record';
+import Records from './components/Records/index';
+import Record from './components/Records/Record';
+import ReviewForm from './components/Records/ReviewForm';
 import Equipment from './components/Equipment';
 import Product from './components/admin/Product';
 import User from './components/admin/User';
 import {ThankYou} from './components/Thankyou';
 import {Vynl} from './components/Vynl';
-import Checkout from './components/Checkout';
+import Checkout from './components/Checkout'
 import {fetch as fetchProducts} from './reducers/products';
 import {fetch as fetchUsers} from './reducers/users';
 import {getRecords} from './reducers/records';
@@ -52,6 +53,7 @@ render(
 				<Route path="/services" component={Services} />
 				<Route path="/records" component={Records} onEnter={onRecordsEnter} />
 				<Route path="/records/:recordId" component={Record} onEnter={onRecordEnter} />
+				<Route path="/reviewForm" component={ReviewForm} />
 				<Route path="/equipment" component={Equipment} />
 				<Route path="/checkout" component={Checkout} />
 				<Route path="/admin/product(/:id)" component={Product} onEnter={onAdminProductEnter} />

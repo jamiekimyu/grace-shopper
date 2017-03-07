@@ -125,3 +125,7 @@ a[disabled]{
 	color: white;
 	opacity:1;
 }
+
+.style-review-button{
+  float: right;
+}
