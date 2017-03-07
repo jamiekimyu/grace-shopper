@@ -70,3 +70,30 @@
 a[disabled]{
   pointer-events: none;
 }
+
+.record-page{
+
+}
+
+.record-page .btn{
+	margin-right: 15px;
+}
+
+.record-image{
+  float: left;
+  width: 600px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+
+.background-green{
+	background-color: green;
+	color: white;
+	opacity:0.9;
+	border: 1px solid black;
+}
+
+.background-green:hover{
+	color: white;
+	opacity:1;
+}
