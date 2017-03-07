@@ -125,7 +125,7 @@ const seedRecords = () => db.Promise.map([
 		title: 'Harder, Better, Faster, Stronger (Single)',
 		artist: 'Daft Punk',
 		releaseDate: 'January 29, 2002',
-		genre: 'Hipster',
+		genre: 'Electronica',
 		product: {
 			name: 'Harder, Better, Faster, Stronger (Single) / Daft Punk',
 			price: Math.floor(Math.random() * 100000) / 100,
@@ -139,7 +139,7 @@ const seedRecords = () => db.Promise.map([
 		title: 'The Crane Wife',
 		artist: 'The Decemberists',
 		releaseDate: 'May 15, 2007',
-		genre: 'Hipster',
+		genre: 'Indie Rock',
 		product: {
 			name: 'The Crane Wife / The Decemberists',
 			price: Math.floor(Math.random() * 100000) / 100,
