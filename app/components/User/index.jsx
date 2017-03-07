@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import Settings from './Settings';
+import Orders from './Orders';
 
 export const User = () => (
 	<div>
@@ -9,6 +10,8 @@ export const User = () => (
 			<div className="panel-body">
 				<Settings />
 			</div>
+		</div>
+		<div className="panel panel-default">
 			<div className="panel-heading">Past Orders</div>
 			<div className="panel-body">
 				<Orders />
