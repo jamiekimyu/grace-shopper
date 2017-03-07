@@ -2,13 +2,14 @@ import React from 'react';
 import { connect } from 'react-redux';
 import Settings from './Settings';
 import Orders from './Orders';
+import {updateUser} from '../../reducers/auth';
 
-export const User = () => (
+export const User = ({auth, handleSettingsSubmit}) => (
 	<div>
 		<div className="panel panel-default">
 			<div className="panel-heading">Settings</div>
 			<div className="panel-body">
-				<Settings />
+				<Settings current={auth} handleSubmit={handleSettingsSubmit} />
 			</div>
 		</div>
 		<div className="panel panel-default">
@@ -20,9 +21,11 @@ export const User = () => (
 	</div>
 );
 
-const mapStateToProps = () => ({});
+const mapStateToProps = ({auth}) => ({auth});
 
-const mapDispatchToProps = () => ({});
+const mapDispatchToProps = (dispatch) => ({
+	handleSettingsSubmit: (settings) => dispatch(updateUser(settings))
+});
 
 export default connect(
 	mapStateToProps,
