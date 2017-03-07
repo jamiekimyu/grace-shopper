@@ -1,15 +1,14 @@
 const db = require('APP/db');
 const Product = db.model('product');
 const Record = db.model('record');
+const Service = db.model('service');
 
 const seedUsers = () => db.Promise.map([
   {name: 'so many', email: 'god@example.com', isAdmin: true, password: '1234'},
   {name: 'Barack Obama', email: 'barack@example.gov', password: '1234'},
 ], user => db.model('users').create(user));
 
-//db.Promise.each => mantains order
-//while .map doesn't
-const seedRecords = () => db.Promise.each([
+const seedRecords = () => db.Promise.map([
 	{
 		title: 'In the Aeroplane Over the Sea',
 		artist: 'Neutral Milk Hotel',
@@ -152,11 +151,39 @@ const seedRecords = () => db.Promise.each([
 	},
 ], newRecord => Record.create(newRecord, { include: [Product] }));
 
+
+const seedServices = () => db.Promise.map([
+	{
+		processingTime: '1 Month',
+		product: {
+			name: 'MP3 to Vynl Service',
+			price: Math.floor(Math.random() * 100000) / 100,
+			description: 'Converts a selection of MP3 files (no, we cannot use any of the newfangled lossless formats) into a single record',
+			primaryCategory: 'Service',
+			photo: 'http://i.imgur.com/5duS2Cm.jpg',
+			quantity: Math.floor(Math.random() * 20)
+		}
+	},
+	{
+		processingTime: '1 Week',
+		product: {
+			name: 'Record Scratching Service',
+			price: Math.floor(Math.random() * 100000) / 100,
+			description: 'Have a record that sounds too clean? We have a specially designed scratching process to introduce all the scratches and pops you remember from your childhood',
+			primaryCategory: 'Service',
+			photo: 'http://i.imgur.com/XR2rIxf.jpg',
+			quantity: Math.floor(Math.random() * 20)
+		}
+	}
+], newService => Service.create(newService, { include: [Product] }));
+
 db.didSync
   .then(() => db.sync({force: true}))
 	.then(seedUsers)
 	.then(users => console.log(`Seeded ${users.length} users OK`))
 	.then(seedRecords)
 	.then(records => console.log(`Seeded ${records.length} records OK`))
+	.then(seedServices)
+	.then(services => console.log(`Seeded ${services.length} services OK`))
   .catch(error => console.error(error))
   .finally(() => db.close());
