@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { browserHistory } from 'react-router';
 
 //ACTION TYPE
 const ADD_TO_CART = 'ADD_TO_CART';
@@ -64,9 +65,9 @@ export const loadCart = () => (
 export const convertToOrder = () => (
 	(dispatch, getState) => {
 		const {cart, user, auth, address} = getState();
-		axios.post('/api/order', {
-			user_id: auth && auth.id,
-			orderItem: cart.map((item) => ({
+		axios.post('/api/orders', {
+			user_id: (auth && auth.id) || undefined,
+			orderItems: cart.map((item) => ({
 				quantity: item.quantity,
 				product_id: item.product.id
 			})),
@@ -82,7 +83,8 @@ export const convertToOrder = () => (
 		})
 		.then(() => {
 			dispatch(setCart([]));
-			window.localStorage.setItem('cart', JSON.stringify([]));
+			window.localStorage.setItem('cart', '[]');
+			browserHistory.push('/thankyou');
 		})
 		.catch(console.error.bind(console));
 	}
