@@ -78,13 +78,20 @@ export const changeProduct = (productId, product) => (
 );
 
 export const createProduct = (product) => (
-	(dispatch) => (
+	(dispatch) => {
+		// Cleanup
+		if(product.primaryCategory === 'Record') {
+			delete product.service
+		} else if(product.primaryCategory === 'Service') {
+			delete product.record;
+		}
+
 		axios.post('/api/products', product)
 			.then(({data}) => dispatch(createOne(data)))
 			.catch(() => {
 				console.error('Failed to create product', product);
 			})
-	)
+	}
 );
 
 export default reducer;
