@@ -5,6 +5,12 @@ const Order = db.define('order', {
 	status: {
 		type: Sequelize.STRING,
 		defaultValue: 'Not Shipped'
+	},
+	email: {
+		type: Sequelize.STRING,
+		validate: {
+			isEmail: true
+		}
 	}
 }, {});
 

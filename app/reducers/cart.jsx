@@ -1,3 +1,5 @@
+import axios from 'axios';
+
 //ACTION TYPE
 const ADD_TO_CART = 'ADD_TO_CART';
 const SET_ITEM_QUANTITY = 'SET_ITEM_QUANTITY';
@@ -27,27 +29,27 @@ export const setCart = (cart) => ({
 
 //THUNK
 export const addToCart = (product) => (
-	(dispatch, getProps) => {
+	(dispatch, getState) => {
 		dispatch(addToCartAction(product));
-		const {cart} = getProps();
+		const {cart} = getState();
 		window.localStorage.setItem('cart', JSON.stringify(cart));
 	}
 );
 export const removeFromCart = (product) => (
-	(dispatch, getProps) => {
+	(dispatch, getState) => {
 		dispatch(removeFromCartAction(product));
-		const {cart} = getProps();
+		const {cart} = getState();
 		window.localStorage.setItem('cart', JSON.stringify(cart));
 	}
 );
 export const setItemQuantity = (product, quantity) => (
-	(dispatch, getProps) => {
+	(dispatch, getState) => {
 		if (quantity == 0) {
 			dispatch(removeFromCartAction(product));
 		} else {
 			dispatch(setItemQuantityAction(product, quantity));
 		}
-		const {cart} = getProps();
+		const {cart} = getState();
 		window.localStorage.setItem('cart', JSON.stringify(cart));
 	}
 );
@@ -56,6 +58,33 @@ export const loadCart = () => (
 	(dispatch) => {
 		let cartJSON = window.localStorage.getItem('cart');
 		dispatch(setCart(JSON.parse(cartJSON) || [] ));
+	}
+);
+
+export const convertToOrder = () => (
+	(dispatch, getState) => {
+		const {cart, user, auth, address} = getState();
+		axios.post('/api/order', {
+			user_id: auth && auth.id,
+			orderItem: cart.map((item) => ({
+				quantity: item.quantity,
+				product_id: item.product.id
+			})),
+			email: auth ? undefined : user.email,
+			address: {
+				name: address.name,
+				street1: address.line1,
+				street2: address.line2,
+				state: address.state,
+				city: address.city,
+				zip: address.zip
+			}
+		})
+		.then(() => {
+			dispatch(setCart([]));
+			window.localStorage.setItem('cart', JSON.stringify([]));
+		})
+		.catch(console.error.bind(console));
 	}
 );
 
