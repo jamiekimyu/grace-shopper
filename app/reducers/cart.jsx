@@ -31,8 +31,14 @@ export const setCart = (cart) => ({
 //THUNK
 export const addToCart = (product) => (
 	(dispatch, getState) => {
-		dispatch(addToCartAction(product));
-		const {cart} = getState();
+		let {cart} = getState();
+		const item = cart.find((cartItem) => cartItem.product.id === product.id);
+		if (item) {
+			dispatch(setItemQuantityAction(product, item.quantity + 1));
+		} else {
+			dispatch(addToCartAction(product));
+		}
+		cart = getState().cart;
 		window.localStorage.setItem('cart', JSON.stringify(cart));
 	}
 );
