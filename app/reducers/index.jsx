@@ -4,6 +4,7 @@ import auth from './auth';
 import products from './products';
 import users from './users';
 import records from './records';
+import services from './services';
 import record from './record';
 import cart from './cart';
 import address from './address';
@@ -13,6 +14,7 @@ const rootReducer = combineReducers({
 	auth,
 	users,
 	products,
+	services,
 	records,
 	record,
 	cart,

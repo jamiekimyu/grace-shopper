@@ -17,12 +17,16 @@ import {Vynl} from './components/Vynl';
 import Checkout from './components/Checkout';
 import {fetch as fetchProducts} from './reducers/products';
 import {fetch as fetchUsers} from './reducers/users';
+import {getServices} from './reducers/services';
 import {getRecords} from './reducers/records';
 import {getRecord} from './reducers/record';
 import {loadCart} from './reducers/cart';
 
 const onRecordsEnter = function () {
 	store.dispatch(getRecords());
+};
+const onServicesEnter = function () {
+	store.dispatch(getServices());
 };
 
 const onRecordEnter = function (nextRouterState) {
@@ -49,7 +53,7 @@ render(
 				<IndexRedirect to="/home" />
 				<Route path="/home" component={Home} />
 				<Route path="/thankyou" component={ThankYou} />
-				<Route path="/services" component={Services} />
+				<Route path="/services" component={Services} onEnter={onServicesEnter} />
 				<Route path="/records" component={Records} onEnter={onRecordsEnter} />
 				<Route path="/records/:recordId" component={Record} onEnter={onRecordEnter} />
 				<Route path="/equipment" component={Equipment} />
