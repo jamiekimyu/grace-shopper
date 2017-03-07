@@ -4,7 +4,7 @@ const db = require('APP/db');
 const User = db.model('users');
 const OAuth = db.model('oauths');
 
-const {mustBeLoggedIn, reqAdmin} = require('./auth.filters');
+const {mustBeLoggedIn, reqAdmin, reqAdminOrSelf} = require('./auth.filters');
 
 module.exports = require('express').Router()
 	.get('/', reqAdmin('only admins can list users'), (req, res, next) =>
@@ -36,7 +36,7 @@ module.exports = require('express').Router()
 		)
 			.then(user => res.json(user))
 			.catch(next))
-	.delete('/:id',	reqAdmin('only admins can delete products'), (req, res, next) => (
+	.delete('/:id',	reqAdmin('only admins can delete users'), (req, res, next) => (
 		User.destroy({
 			where: {
 				id: req.params.id
@@ -45,7 +45,7 @@ module.exports = require('express').Router()
 			.then(() => res.sendStatus(204))
 			.catch(next)
 	))
-	.put('/:id', reqAdmin('only admins can update products'), (req, res, next) => (
+	.put('/:id', reqAdminOrSelf('only admins can update users'), (req, res, next) => (
 		User.findById(
 			req.params.id,
 			{

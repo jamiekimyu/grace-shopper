@@ -2,7 +2,7 @@ import React from 'react';
 
 export const WhoAmI = ({ user, logout }) => (
 	<div className="whoami">
-		{/*Why doesn't this work????<Link to="/user">Profile</Link*/}
+		{/*Why doesn't this work????<Link to="/user">Profile</Link>*/}
 		<a className="btn btn-primary" href="/user">Profile</a>
 		<button className="btn btn-secondary" onClick={logout}>Logout</button>
 	</div>

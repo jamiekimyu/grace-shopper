@@ -19,6 +19,14 @@ const reqAdmin = message => (req, res, next) => {
 	next();
 };
 
+const reqAdminOrSelf = message => (req, res, next) => {
+	console.log(req.user.isAdmin, req.user.id, req.params, !req.user, !req.user.isAdmin, +req.params.id !== req.user.id);
+	if (!req.user || (!req.user.isAdmin && +req.params.id !== req.user.id)) {
+		return res.status(403).send(message);
+	}
+	next();
+};
+
 // Feel free to add more filters here (suggested: something that keeps out non-admins)
 
-module.exports = {mustBeLoggedIn, selfOnly, reqAdmin};
+module.exports = {mustBeLoggedIn, selfOnly, reqAdmin, reqAdminOrSelf};
