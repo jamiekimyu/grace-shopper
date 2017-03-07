@@ -11,7 +11,7 @@ module.exports = {
 		html = new sendgrid.mail.Content('text/html', html);
 		const mail = new sendgrid.mail.Mail(from, subject, to, html);
 
-		var request = sender.emptyRequest({
+		const request = sender.emptyRequest({
 			method: 'POST',
 			path: '/v3/mail/send',
 			body: mail.toJSON()
@@ -19,7 +19,7 @@ module.exports = {
 
 		return new Promise((resolve, reject) => {
 			sender.API(request, function(error, response) {
-				if(error) reject(error);
+				if (error) reject(error);
 				else resolve(response);
 			});
 		});
