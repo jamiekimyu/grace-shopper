@@ -5,6 +5,7 @@ import { Link } from 'react-router';
 import Login from './Login';
 import WhoAmI from './WhoAmI';
 import ShoppingCart from './ShoppingCart';
+import WishList from './WishList';
 
 export const Header = connect(
   ({ auth }) => ({ user: auth })
@@ -16,6 +17,14 @@ export const Header = connect(
           <Link to="/" className="navbar-brand">VYNL</Link>
         </div>
         <ul className="nav navbar-nav navbar-right">
+					<li className="navbar-text">
+            <label htmlFor="wishlist-toggle">
+              <i className="glyphicon glyphicon-heart" />
+              <div className="wishlist-count">3</div>
+            </label>
+            <input id="wishlist-toggle" type="checkbox" className="toggle-checkbox" />
+            <div className="wishlist-flyout"><WishList /></div>
+          </li>
           <li className="navbar-text">
             <label htmlFor="cart-toggle">
               <i className="glyphicon glyphicon-shopping-cart" />
