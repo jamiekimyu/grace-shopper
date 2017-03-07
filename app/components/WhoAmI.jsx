@@ -4,6 +4,7 @@ export const WhoAmI = ({ user, logout }) => (
   <div className="whoami">
     <span className="whoami-user-name">{user && user.name}</span>
     <button className="logout" onClick={logout}>Logout</button>
+    <Link to="/user">Profile</Link>
   </div>
 );
 

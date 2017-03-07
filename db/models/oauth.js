@@ -39,7 +39,7 @@ OAuth.V2 = (accessToken, refreshToken, profile, done) =>
 			debug(profile);
 			debug('provider:%s will log in user:{name=%s uid=%s}',
 				profile.provider,
-				profile.displayName,
+				profile.displayName || profile.username,
 				profile.id
 			);
 			oauth.profileJson = profile;
@@ -56,6 +56,7 @@ OAuth.V2 = (accessToken, refreshToken, profile, done) =>
 		.then(({ oauth, newUser }) => newUser ||
 			User.create({
 				name: profile.displayName,
+				email: profile.emails[0].value
 			})
 				.then(user => db.Promise.props({
 					user,
