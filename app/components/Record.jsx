@@ -39,7 +39,10 @@ const mapStateToProps = ({record}) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-	clickAddToCart: (product) => {
+	clickAddToCart: (record) => {
+		const product =  Object.assign({}, record.product);
+		product.record = Object.assign({}, record);
+		delete product.record.product;
 		dispatch(addToCart(product));
 	}
 });
