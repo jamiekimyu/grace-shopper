@@ -12,10 +12,11 @@ import Records from './components/Records';
 import Record from './components/Record';
 import Equipment from './components/Equipment';
 import Product from './components/admin/Product';
-import User from './components/admin/User';
+import UserAdmin from './components/admin/User';
 import {ThankYou} from './components/Thankyou';
 import {Vynl} from './components/Vynl';
 import Checkout from './components/Checkout';
+import User from './components/User';
 import {fetch as fetchProducts} from './reducers/products';
 import {fetch as fetchUsers} from './reducers/users';
 import {getServices} from './reducers/services';
@@ -61,12 +62,13 @@ render(
 				<Route path="/thankyou" component={ThankYou} />
 				<Route path="/services/:serviceId" component={Service} onEnter={onServiceEnter} />
 				<Route path="/services" component={Services} onEnter={onServicesEnter} />
+				<Route path="/user" component={User} />
 				<Route path="/records" component={Records} onEnter={onRecordsEnter} />
 				<Route path="/records/:recordId" component={Record} onEnter={onRecordEnter} />
 				<Route path="/equipment" component={Equipment} />
 				<Route path="/checkout" component={Checkout} />
 				<Route path="/admin/product(/:id)" component={Product} onEnter={onAdminProductEnter} />
-				<Route path="/admin/user(/:id)" component={User} onEnter={onAdminUserEnter} />
+				<Route path="/admin/user(/:id)" component={UserAdmin} onEnter={onAdminUserEnter} />
 			</Route>
 		</Router>
 	</Provider>,

@@ -42,6 +42,7 @@ OAuth.setupStrategy({
 		clientID: env.FACEBOOK_CLIENT_ID,
 		clientSecret: env.FACEBOOK_CLIENT_SECRET,
 		callbackURL: `${app.baseUrl}/api/auth/login/facebook`,
+		profileFields: ['displayName', 'email']
 	},
 	passport
 });
@@ -55,6 +56,7 @@ OAuth.setupStrategy({
 		clientID: env.GOOGLE_CLIENT_ID,
 		clientSecret: env.GOOGLE_CLIENT_SECRET,
 		callbackURL: `${app.baseUrl}/api/auth/login/google`,
+		scope: ['email']
 	},
 	passport
 });
@@ -68,6 +70,7 @@ OAuth.setupStrategy({
 		clientID: env.GITHUB_CLIENT_ID,
 		clientSecret: env.GITHUB_CLIENT_SECRET,
 		callbackURL: `${app.baseUrl}/api/auth/login/github`,
+		scope: ['user:email']
 	},
 	passport
 });
@@ -130,9 +133,7 @@ auth.post('/login/local', passport.authenticate('local', { successRedirect: '/' 
 // Register this route as a callback URL with OAuth provider
 auth.get('/login/:strategy', (req, res, next) =>
 	passport.authenticate(req.params.strategy, {
-		scope: 'email',
-		successRedirect: '/',
-		// Specify other config here, such as "scope"
+		successRedirect: '/'
 	})(req, res, next)
 );
 
