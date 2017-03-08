@@ -20,11 +20,4 @@ export const Records = ({records}) => (
 
 );
 
-const mapStateToProps = ({records}) => ({records});
-
-const mapDispatchToProps = () => ({});
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Records);
+export default Records;

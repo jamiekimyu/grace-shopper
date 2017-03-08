@@ -12,7 +12,14 @@ export const getRecords = () => {
 	return dispatch => {
 		return axios.get('/api/records')
 			.then((response) => {
-				dispatch(receiveRecords(response.data));
+				dispatch(receiveRecords(response.data.map((record) => {
+					return Object.assign({}, record, {
+						genre: record.genre
+							.toLowerCase()
+							.split(',')
+							.map((str) => str.trim())
+					});
+				})));
 			});
 	};
 
