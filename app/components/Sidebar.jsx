@@ -10,6 +10,7 @@ export const Sidebar = ({ isAdmin }) => (
 		{ isAdmin ? ( <li><hr /></li> ) : null }
 		{ isAdmin ? ( <li><Link to="/admin/product">Admin Products Control Panel</Link></li> ) : null }
 		{ isAdmin ? ( <li><Link to="/admin/user">Admin Users Control Panel</Link></li> ) : null }
+		{ isAdmin ? ( <li><Link to="/admin/orders">Admin Orders Control Panel</Link></li> ) : null }
 	</ul>
 );
 
