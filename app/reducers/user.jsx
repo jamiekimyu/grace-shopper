@@ -13,7 +13,6 @@ export const userChange = (user) => ({
 //THUNK
 
 
-
 //REDUCER
 export default (state = {loggedIn: false}, action) => {
 

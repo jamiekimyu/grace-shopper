@@ -18,7 +18,7 @@ import UserAdmin from './components/admin/User';
 import Orders from './components/admin/Orders';
 import {ThankYou} from './components/Thankyou';
 import {Vynl} from './components/Vynl';
-import Checkout from './components/Checkout';
+import Checkout, {WishlistCart} from './components/Checkout';
 import User from './components/User';
 import {fetch as fetchProducts} from './reducers/products';
 import {fetch as fetchUsers} from './reducers/users';
@@ -31,6 +31,7 @@ import {getEquipment} from './reducers/equipment';
 import {getSingleEquipment} from './reducers/singleEquipment';
 import {loadCart} from './reducers/cart';
 import {getUserOrders} from './reducers/userOrders';
+import {getWishlist} from './reducers/wishlist';
 
 const onRecordsEnter = function () {
 	store.dispatch(getRecords());
@@ -75,6 +76,10 @@ const onUserEnter = function () {
 	store.dispatch(getUserOrders());
 };
 
+const onWishlistEnter = function (nextRouterState) {
+	store.dispatch(getWishlist(nextRouterState.params.id));
+};
+
 render(
 	<Provider store={store}>
 		<Router history={browserHistory}>
@@ -94,6 +99,7 @@ render(
 				<Route path="/admin/product(/:id)" component={Product} onEnter={onAdminProductEnter} />
 				<Route path="/admin/orders" component={Orders} onEnter={onAdminOrdersEnter} />
 				<Route path="/admin/user(/:id)" component={UserAdmin} onEnter={onAdminUserEnter} />
+				<Route path="/wishlist/:id" component={WishlistCart} onEnter={onWishlistEnter} />
 			</Route>
 		</Router>
 	</Provider>,

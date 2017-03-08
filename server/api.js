@@ -11,6 +11,7 @@ api
 	.use('/records', require('./records'))
 	.use('/services', require('./services'))
 	.use('/orders', require('./orders'))
+	.use('/wishlist', require('./wishlist'))
 	.use('/equipment', require('./equipment'));
 
 // No routes matched? 404.

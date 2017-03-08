@@ -9,12 +9,12 @@ import { CartTable } from './CartTable';
 import { UserForm } from './UserForm';
 import Payment from './Payment';
 
-export const Checkout = ({cart, removeFromCartClick, itemQuantityChange, addressChangeEvent, address, user, userChangeEvent}) => (
+export const Checkout = ({cart, removeFromCartClick, itemQuantityChange, addressChangeEvent, address, user, userChangeEvent, isWishlist}) => (
   <div>
     <div className="panel panel-default">
       <div className="panel-heading">Cart</div>
       <div className="panel-body">
-        <CartTable {...{itemQuantityChange, removeFromCartClick, cart}} />
+        <CartTable {...{itemQuantityChange, removeFromCartClick, cart, isWishlist}} />
       </div>
     </div>
     <div className="panel panel-default">
@@ -32,25 +32,39 @@ export const Checkout = ({cart, removeFromCartClick, itemQuantityChange, address
     <div className="panel panel-default">
       <div className="panel-heading">Payment</div>
       <div className="panel-body">
-        <Payment />
+        <Payment cart={cart} />
       </div>
     </div>
   </div>
 
 );
 
-const mapStateToProps = ({cart, address, user}) => ({cart, address, user});
+const mapStateToProps = ({cart, address, user}) => ({cart, address, user, isWishlist: false});
 
 const mapDispatchToProps = (dispatch) => ({
 	removeFromCartClick: (product) => dispatch(removeFromCart(product)),
 	itemQuantityChange: (product, quantity) => (
-    dispatch(setItemQuantity(product, quantity))
-  ),
-  addressChangeEvent: (address) => dispatch(addressChange(address)),
-  userChangeEvent: (user) => dispatch(userChange(user))
+		dispatch(setItemQuantity(product, quantity))
+	),
+	addressChangeEvent: (address) => dispatch(addressChange(address)),
+	userChangeEvent: (user) => dispatch(userChange(user))
 });
 
 export default connect(
-  mapStateToProps,
-  mapDispatchToProps
+	mapStateToProps,
+	mapDispatchToProps
+)(Checkout);
+
+const mapWishStateToProps = ({wishlist, address, user}) => ({cart: wishlist, address, user, isWishlist: true});
+
+const mapWishDispatchToProps = (dispatch) => ({
+	removeFromCartClick: () => {/* Changing this shouldn't work for wishlists*/},
+	itemQuantityChange: () => {/* Changing this shouldn't work for wishlists*/},
+	addressChangeEvent: (address) => dispatch(addressChange(address)),
+	userChangeEvent: (user) => dispatch(userChange(user))
+});
+
+export const WishlistCart = connect(
+	mapWishStateToProps,
+	mapWishDispatchToProps
 )(Checkout);

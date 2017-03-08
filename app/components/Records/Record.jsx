@@ -1,11 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { addToCart } from '../../reducers/cart';
+import { addWishlist } from '../../reducers/auth';
 import {Review} from '../Review';
 
 /* --------COMPONENT-----------*/
 
-export const Record = ({record, clickAddToCart}) => (
+export const Record = ({record, clickAddToCart, addWishlistClick}) => (
 		<div>
 			<div className="container-fluid record-page">
 				<img src={record.product && record.product.photo} className="img-thumbnail record-image" />
@@ -18,7 +19,7 @@ export const Record = ({record, clickAddToCart}) => (
 				<h1>Description: {record.product && record.product.description}</h1>
 				<h1>Price: {record.product && record.product.price}</h1>
 				<button className="btn btn-primary" disabled={record.product && record.product.disabled} type="button" onClick={() => clickAddToCart(record)}>Add to Cart</button>
-				<button className="btn background-green" type="button">Add to Wishlist</button>
+				<button className="btn background-green" onClick={() => addWishlistClick(record.product)} type="button">Add to Wishlist</button>
 			</div>
 			<div>
 				<Review product={record.product} />
@@ -38,6 +39,9 @@ const mapDispatchToProps = (dispatch) => ({
 		product.record = Object.assign({}, record);
 		delete product.record.product;
 		dispatch(addToCart(product));
+	},
+	addWishlistClick: (product) => {
+		dispatch(addWishlist(product));
 	}
 });
 

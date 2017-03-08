@@ -62,4 +62,29 @@ export const updateUser = (settings) => (
 	}
 );
 
+export const addWishlist = (product) => (
+	(dispatch, getState) => {
+		const {auth} = getState();
+		axios.post('/api/wishlist', {user_id: auth.id, product_id: product.id, quantity: 1})
+			.then(() => dispatch(whoami()))
+			.catch(() => dispatch(whoami()));
+	}
+);
+
+export const removeWishlist = (id) => (
+	(dispatch, getState) => {
+		axios.delete(`/api/wishlist/${id}`)
+			.then(() => dispatch(whoami()))
+			.catch(() => dispatch(whoami()));
+	}
+);
+
+export const updateWishlist = (id, values) => (
+	(dispatch, getState) => {
+		axios.put(`/api/wishlist/${id}`, values)
+			.then(() => dispatch(whoami()))
+			.catch(() => dispatch(whoami()));
+	}
+);
+
 export default reducer;

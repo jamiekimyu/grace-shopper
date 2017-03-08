@@ -13,10 +13,10 @@ export const Payment = ({checkoutClick}) => (
 /* --------CONTAINER-----------*/
 const mapStateToProps = () => ({});
 
-const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = (dispatch, ownProps) => ({
 	checkoutClick: (evt) => {
 		evt.preventDefault();
-		dispatch(convertToOrder());
+		dispatch(convertToOrder(ownProps.cart));
 	}
 });
 
