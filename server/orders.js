@@ -29,9 +29,6 @@ module.exports = require('express').Router()
 				}
 			);
 		}).then((order) => {
-
-			console.log(req.user);
-
 			return mailer.sendMail({
 				to: order.email || req.user.email,
 				subject: 'Order Recieved',
