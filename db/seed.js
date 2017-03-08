@@ -83,7 +83,7 @@ const seedRecords = () => db.Promise.map([
 		title: 'Someone Great (Single)',
 		artist: 'LCD Soundsystem',
 		releaseDate: 'March 20, 2007',
-		genre: 'Electronica',
+		genre: 'Electronica, Strangecore',
 		product: {
 			name: 'Someone Great (Single) / LCD Soundsystem',
 			price: Math.floor(Math.random() * 100000) / 100,
@@ -125,7 +125,7 @@ const seedRecords = () => db.Promise.map([
 		title: 'Harder, Better, Faster, Stronger (Single)',
 		artist: 'Daft Punk',
 		releaseDate: 'January 29, 2002',
-		genre: 'Electronica',
+		genre: 'Electronica, Hipster',
 		product: {
 			name: 'Harder, Better, Faster, Stronger (Single) / Daft Punk',
 			price: Math.floor(Math.random() * 100000) / 100,

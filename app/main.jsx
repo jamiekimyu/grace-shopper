@@ -8,7 +8,7 @@ import store from './store';
 import Home from './components/Home';
 import Services from './components/Services';
 import Service from './components/Service';
-import Records from './components/Records';
+import FilterGenreContainer from './components/FilterGenreContainer';
 import Record from './components/Record';
 import Equipment from './components/Equipment';
 import Product from './components/admin/Product';
@@ -68,7 +68,7 @@ render(
 				<Route path="/services/:serviceId" component={Service} onEnter={onServiceEnter} />
 				<Route path="/services" component={Services} onEnter={onServicesEnter} />
 				<Route path="/user" component={User} onEnter={onUserEnter} />
-				<Route path="/records" component={Records} onEnter={onRecordsEnter} />
+				<Route path="/records" component={FilterGenreContainer} onEnter={onRecordsEnter} />
 				<Route path="/records/:recordId" component={Record} onEnter={onRecordEnter} />
 				<Route path="/equipment" component={Equipment} />
 				<Route path="/checkout" component={Checkout} />
