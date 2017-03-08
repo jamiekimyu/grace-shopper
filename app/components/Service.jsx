@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import { addToCart } from '../reducers/cart';
+import {Review} from './Review';
 
 /* --------COMPONENT-----------*/
 
@@ -17,13 +18,7 @@ export const Record = ({service, clickAddToCart}) => (
 				<button className="btn background-green" type="button">Add to Wishlist</button>
 			</div>
 			<div>
-				<h2>Reviews</h2>
-				<div className="panel panel-default">
-					<div className="panel-heading">
-						<h3 className="panel-title">Review Title</h3>
-					</div>
-					<div className="panel-body">Review Body</div>
-				</div>
+				<Review product={service.product} />
 			</div>
 		</div>
 

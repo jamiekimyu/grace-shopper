@@ -1,6 +1,7 @@
 const db = require('APP/db');
 const Product = db.model('product');
 const Record = db.model('record');
+const Review = db.model('review');
 const Service = db.model('service');
 const Equipment = db.model('equipment');
 
@@ -181,6 +182,75 @@ const seedRecords = () => db.Promise.map([
 ], newRecord => Record.create(newRecord, { include: [Product] }));
 
 
+const seedReviews = () => db.Promise.map([
+	{
+		rating:  Math.floor(Math.random() * 5),
+		comment: "Everything is awesome!!!!!!!!!!!",
+		user_id: 1,
+		product_id: 1
+	},
+	{
+		rating:  Math.floor(Math.random() * 5),
+		comment: "Everything is awesome!!!!!!!!!!!",
+		user_id: 2,
+		product_id: 5
+	},
+	{
+		rating:  Math.floor(Math.random() * 5),
+		comment: "Everything is awesome!!!!!!!!!!!",
+		user_id: 1,
+		product_id: 8
+	},
+	{
+		rating:  Math.floor(Math.random() * 5),
+		comment: "Everything is awesome!!!!!!!!!!!",
+		user_id: 1,
+		product_id: 2
+	},
+	{
+		rating:  Math.floor(Math.random() * 5),
+		comment: "Everything is awesome!!!!!!!!!!!",
+		user_id: 1,
+		product_id: 4
+	},
+	{
+		rating:  Math.floor(Math.random() * 5),
+		comment: "Everything is awesome!!!!!!!!!!!",
+		user_id: 1,
+		product_id: 6
+	},
+	{
+		rating:  Math.floor(Math.random() * 5),
+		comment: "Everything is awesome!!!!!!!!!!!",
+		user_id: 2,
+		product_id: 4
+	},
+	{
+		rating:  Math.floor(Math.random() * 5),
+		comment: "Everything is awesome!!!!!!!!!!!",
+		user_id: 2,
+		product_id: 9
+	},
+	{
+		rating:  Math.floor(Math.random() * 5),
+		comment: "Everything is awesome!!!!!!!!!!!",
+		user_id: 1,
+		product_id: 10
+	},
+	{
+		rating:  Math.floor(Math.random() * 5),
+		comment: "Everything is awesome!!!!!!!!!!!",
+		user_id: 2,
+		product_id: 3
+	},
+	{
+		rating:  Math.floor(Math.random() * 5),
+		comment: "Everything is awesome!!!!!!!!!!!",
+		user_id: 2,
+		product_id: 1
+	}
+], review => db.model('review').create(review));
+
 const seedServices = () => db.Promise.map([
 	{
 		processingTime: '1 Month',
@@ -226,6 +296,8 @@ db.didSync
 	.then(users => console.log(`Seeded ${users.length} users OK`))
 	.then(seedRecords)
 	.then(records => console.log(`Seeded ${records.length} records OK`))
+	.then(seedReviews)
+	.then(reviews => console.log(`Seeded ${reviews.length} reviews OK`))
 	.then(seedServices)
 	.then(services => console.log(`Seeded ${services.length} services OK`))
 	.then(seedEquipment)
