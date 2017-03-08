@@ -75,6 +75,8 @@ export default class Settings extends Component {
         </div>
 
         <div className="form-group">
+
+	        { this.props.current && this.props.current.password_reset ? (<div className="alert alert-danger" role="alert">You need to change your password</div>) : '' }
           <label htmlFor="admin-password">Password</label>
           <input
             type="password"
