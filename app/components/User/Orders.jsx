@@ -8,8 +8,8 @@ const urlMap = {
 };
 
 const idMap = {
-	Record: 'record_id',
-	Service: 'service_id'
+	Record: 'record',
+	Service: 'service'
 };
 
 export const Orders = ({userOrders}) => (
@@ -23,7 +23,7 @@ export const Orders = ({userOrders}) => (
 			      {order.orderItems.map((item) => (
 			        <li key={item.id}>
 				        {item.quantity}x&nbsp;
-				        <Link to={`/${urlMap[item.product.primaryCategory]}/${item.product[idMap[item.product.primaryCategory]]}`}>
+				        <Link to={`/${urlMap[item.product.primaryCategory]}/${item.product[idMap[item.product.primaryCategory]].id}`}>
 					        {item.product.name}
 				        </Link>&nbsp;
 				        (${item.price})

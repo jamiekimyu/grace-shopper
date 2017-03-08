@@ -5,6 +5,8 @@ const User = db.model('users');
 const Order = db.model('order');
 const OrderItem = db.model('orderItem');
 const Product = db.model('product');
+const Record = db.model('record');
+const Service = db.model('service');
 const OAuth = db.model('oauths');
 
 const {mustBeLoggedIn, reqAdmin, reqAdminOrSelf} = require('./auth.filters');
@@ -45,7 +47,10 @@ module.exports = require('express').Router()
 				where: {user_id: req.params.id},
 				include: [{
 					model: OrderItem,
-					include: [Product]
+					include: [{
+						model: Product,
+						include: [Record, Service]
+					}]
 				}]
 			}
 		)
