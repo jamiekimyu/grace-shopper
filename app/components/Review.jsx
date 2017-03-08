@@ -29,13 +29,3 @@ export const Review = ({product}) => (
 	</div>
 
 );
-{/*
-	JSON.stringify(product && product.reviews)
-	product.reviews.map((review) => (
-		<li key={review.id} className="container-fluid">
-			<div>
-				{review.comment}
-			</div>
-		</li>
-	))
-*/}
