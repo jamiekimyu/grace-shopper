@@ -5,6 +5,7 @@ const Order = db.model('order');
 const OrderItem = db.model('orderItem');
 const Address = db.model('address');
 const Product = db.model('product');
+const mailer = require('./mailer');
 
 module.exports = require('express').Router()
 	.post('/', (req, res, next) => {
@@ -28,6 +29,10 @@ module.exports = require('express').Router()
 				}
 			);
 		}).then((order) => {
-			res.status(201).json(order);
-		}).catch(next);
+			return mailer.sendMail({
+				to: order.email || req.user.email,
+				subject: 'Order Recieved',
+				html: 'Your Order Was Recieved'
+			}).then(() => order);
+		}).then((order) => res.status(201).json(order)).catch(next);
 	});

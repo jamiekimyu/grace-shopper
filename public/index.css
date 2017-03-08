@@ -4,7 +4,6 @@
 
 .toggle-checkbox ~ * {
   display: none;
-  position: absolute;
 }
 
 .toggle-checkbox:checked ~ * {
@@ -12,6 +11,7 @@
 }
 
 .login-flyout, .cart-flyout, .wishlist-flyout {
+  position: absolute;
   right: -12px;
   width: 200px;
   background-color: white;
@@ -19,7 +19,7 @@
   margin-top: 17px;
   padding: 6px;
   border: 1px solid black;
-	z-index: 50;
+  z-index: 50;
 }
 .cart-flyout {
   margin-top: 16px;
@@ -104,7 +104,7 @@ a[disabled]{
 }
 
 .record-page .btn{
-	margin-right: 15px;
+  margin-right: 15px;
 }
 
 .record-image{
@@ -115,15 +115,19 @@ a[disabled]{
 }
 
 .background-green{
-	background-color: green;
-	color: white;
-	opacity:0.9;
-	border: 1px solid black;
+  background-color: green;
+  color: white;
+  opacity:0.9;
+  border: 1px solid black;
 }
 
 .background-green:hover{
-	color: white;
-	opacity:1;
+  color: white;
+  opacity:1;
+}
+
+.panel-heading > label {
+  width: 100%;
 }
 
 .style-review-button{

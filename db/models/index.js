@@ -8,6 +8,7 @@ const User = require('./user');
 const OAuth = require('./oauth');
 const Product = require('./product');
 const Record = require('./record');
+const Service = require('./service');
 const Order = require('./order');
 const Review = require('./review');
 const OrderItem = require('./orderItem');
@@ -18,6 +19,9 @@ User.hasOne(OAuth);
 
 Product.hasOne(Record, {onDelete: 'CASCADE'});
 Record.belongsTo(Product, {onDelete: 'CASCADE'});
+
+Product.hasOne(Service, {onDelete: 'CASCADE'});
+Service.belongsTo(Product, {onDelete: 'CASCADE'});
 
 Order.belongsTo(User);
 User.hasMany(Order);

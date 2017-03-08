@@ -4,11 +4,12 @@ const db = require('APP/db');
 const Product = db.model('product');
 const Record = db.model('record');
 const Review = db.model('review');
+const Service = db.model('service');
 const {reqAdmin} = require('./auth.filters');
 
 module.exports = require('express').Router()
 	.get('/', (req, res, next) => (
-		Product.findAll({include: [Record]})
+		Product.findAll({include: [Record, Service]})
 			.then((product) => res.json(product))
 			.catch(next)
 	))
@@ -38,7 +39,8 @@ module.exports = require('express').Router()
 		Product.create(
 			req.body,
 			{
-				returning: true
+				returning: true,
+				include: [Record, Service]
 			}
 		)
 		.then((result) => res.json(result))
