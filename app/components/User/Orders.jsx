@@ -4,12 +4,14 @@ import { Link } from 'react-router';
 
 const urlMap = {
 	Record: 'records',
-	Service: 'services'
+	Service: 'services',
+	Equipment: 'singleEquipment'
 };
 
 const idMap = {
 	Record: 'record',
-	Service: 'service'
+	Service: 'service',
+	Equipment: 'equipment'
 };
 
 export const Orders = ({userOrders}) => (

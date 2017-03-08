@@ -129,3 +129,7 @@ a[disabled]{
 .panel-heading > label {
   width: 100%;
 }
+
+.style-review-button{
+  float: left;
+}

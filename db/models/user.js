@@ -19,6 +19,10 @@ const User = db.define('users', {
 		type: Sequelize.BOOLEAN,
 		defaultValue: false
 	},
+	password_reset: {
+		type: Sequelize.BOOLEAN,
+		defaultValue: false
+	},
 
   // We support oauth, so users may or may not have passwords.
 	password_digest: Sequelize.STRING, // This column stores the hashed password in the DB, via the beforeCreate/beforeUpdate hooks
@@ -49,6 +53,7 @@ function setEmailAndPassword(user) {
 	  bcrypt.hash(user.get('password'), 10, (err, hash) => {
 		  if (err) reject(err);
 		  user.set('password_digest', hash);
+		  user.set('password_reset', false);
 		resolve(user);
 	  })
   );

@@ -2,24 +2,24 @@
 
 const db = require('APP/db');
 const Product = db.model('product');
-const Service = db.model('service');
+const Equipment = db.model('equipment');
 const Review = db.model('review');
 
 module.exports = require('express').Router()
 	.get('/', (req, res, next) =>
-		Service.findAll({
+		Equipment.findAll({
 			include: [{
 				where: {disabled: false},
 				required: true,
 				model: Product
 			}]
 		})
-			.then(records => res.json(records))
+			.then(equipment => res.json(equipment))
 			.catch(next))
 	.get('/:id', (req, res, next) =>
-		Service.findById(req.params.id, {include: [{
+		Equipment.findById(req.params.id, {include: [{
 			model: Product,
 			include: [Review]
 		}]})
-			.then(record => res.json(record))
+			.then(equipment => res.json(equipment))
 			.catch(next));

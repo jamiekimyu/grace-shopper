@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router';
-import { addToCart } from '../reducers/cart';
+import { addToCart } from '../../reducers/cart';
+import {Review} from '../Review';
 
 /* --------COMPONENT-----------*/
 
@@ -17,17 +17,11 @@ export const Record = ({record, clickAddToCart}) => (
 				<h1>Rating: Add averageRating functionality</h1>
 				<h1>Description: {record.product && record.product.description}</h1>
 				<h1>Price: {record.product && record.product.price}</h1>
-				<button className="btn btn-primary" type="button" onClick={() => clickAddToCart(record)}>Add to Cart</button>
+				<button className="btn btn-primary" disabled={record.product && record.product.disabled} type="button" onClick={() => clickAddToCart(record)}>Add to Cart</button>
 				<button className="btn background-green" type="button">Add to Wishlist</button>
 			</div>
 			<div>
-				<h2>Reviews</h2>
-				<div className="panel panel-default">
-					<div className="panel-heading">
-						<h3 className="panel-title">Review Title</h3>
-					</div>
-					<div className="panel-body">Review Body</div>
-				</div>
+				<Review product={record.product} />
 			</div>
 		</div>
 

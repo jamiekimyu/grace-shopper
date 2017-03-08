@@ -81,8 +81,13 @@ export const createProduct = (product) => (
 	(dispatch) => {
 		// Cleanup
 		if(product.primaryCategory === 'Record') {
-			delete product.service
+			delete product.service;
+			delete product.equipment;
 		} else if(product.primaryCategory === 'Service') {
+			delete product.record;
+			delete product.equipment;
+		} else if(product.primaryCategory === 'Equipment') {
+			delete product.service;
 			delete product.record;
 		}
 

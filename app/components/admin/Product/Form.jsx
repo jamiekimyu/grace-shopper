@@ -17,13 +17,16 @@ export default class Form extends Component {
 			'admin-record-title': 'title',
 			'admin-record-release-date': 'releaseDate',
 			'admin-record-genre': 'genre',
-			'admin-service-time': 'processingTime'
+			'admin-service-time': 'processingTime',
+			'admin-equipment-weight': 'weight'
 		};
 
 		this.handleChange = this.handleChange.bind(this);
 		this.handleRecordChange = this.handleRecordChange.bind(this);
 		this.handleServiceChange = this.handleServiceChange.bind(this);
 		this.handleSubmit = this.handleSubmit.bind(this);
+		this.handleDisabledChange = this.handleDisabledChange.bind(this);
+		this.handleEquipmentChange = this.handleEquipmentChange.bind(this);
 	}
 
 	componentWillReceiveProps(nextProps) {
@@ -34,6 +37,7 @@ export default class Form extends Component {
 		current = current || {};
 		const record = current.record || {};
 		const service = current.service || {};
+		const equipment = current.equipment || {};
 
 		return {
 			name: current.name,
@@ -42,6 +46,7 @@ export default class Form extends Component {
 			primaryCategory: current.primaryCategory || 'Record',
 			photo: current.photo,
 			quantity: current.quantity,
+			disabled: current.disabled,
 			record: {
 				title: record.title,
 				artist: record.artist,
@@ -50,6 +55,9 @@ export default class Form extends Component {
 			},
 			service: {
 				processingTime: service.processingTime
+			},
+			equipment: {
+				weight: equipment.weight
 			}
 		};
 	}
@@ -76,9 +84,21 @@ export default class Form extends Component {
 		});
 	}
 
+	handleEquipmentChange(event) {
+		this.setState({
+			equipment: Object.assign({}, this.state.equipment, {
+				[this.idMap[event.target.id]]: event.target.value
+			})
+		});
+	}
+
 	handleSubmit(event) {
 		event.preventDefault();
 		this.props.handleSubmit(this.props.current.id, this.state);
+	}
+
+	handleDisabledChange(event) {
+		this.setState({ disabled: event.target.checked });
 	}
 
 	render() {
@@ -156,6 +176,17 @@ export default class Form extends Component {
 					/>
 				</div>
 
+				<div className="form-group">
+					<input
+						type="checkbox"
+						id="admin-disabled"
+						checked={this.state.disabled}
+						onChange={this.handleDisabledChange}
+					/>&nbsp;
+					<label htmlFor="admin-disabled">Disable Product</label>
+				</div>
+
+
 				{ this.state.primaryCategory === 'Record' ? (
 					<div className="panel panel-default">
 						<div className="panel-heading">
@@ -221,6 +252,24 @@ export default class Form extends Component {
 									id="admin-service-time"
 									value={this.state.service.processingTime}
 									onChange={this.handleServiceChange}
+								/>
+							</div>
+						</div>
+					</div>
+				) : this.state.primaryCategory === 'Equipment' ? (
+					<div className="panel panel-default">
+						<div className="panel-heading">
+							Service Information
+						</div>
+						<div className="panel-body">
+							<div className="form-group">
+								<label htmlFor="admin-equipment-weight">Weight</label>
+								<input
+									type="text"
+									className="form-control"
+									id="admin-equipment-weight"
+									value={this.state.equipment.weight}
+									onChange={this.handleEquipmentChange}
 								/>
 							</div>
 						</div>

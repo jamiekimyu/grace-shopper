@@ -3,12 +3,14 @@
 const db = require('APP/db');
 const Product = db.model('product');
 const Record = db.model('record');
+const Review = db.model('review');
 const Service = db.model('service');
+const Equipment = db.model('equipment');
 const {reqAdmin} = require('./auth.filters');
 
 module.exports = require('express').Router()
 	.get('/', (req, res, next) => (
-		Product.findAll({include: [Record, Service]})
+		Product.findAll({include: [Record, Service, Equipment]})
 			.then((product) => res.json(product))
 			.catch(next)
 	))
@@ -39,7 +41,21 @@ module.exports = require('express').Router()
 			req.body,
 			{
 				returning: true,
-				include: [Record, Service]
+				include: [Record, Service, Equipment]
+			}
+		)
+		.then((result) => res.json(result))
+		.catch(next)
+	))
+	.post('/:productId/review', (req, res, next) => (
+		Review.create(
+			{
+				comment: req.body.review,
+				rating: req.body.rating,
+				product_id: req.params.productId
+			},
+			{
+				returning: true
 			}
 		)
 		.then((result) => res.json(result))

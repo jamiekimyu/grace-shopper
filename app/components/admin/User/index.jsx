@@ -6,9 +6,9 @@ import Table from './Table';
 import {deleteUser, changeUser, createUser} from '../../../reducers/users';
 import Form from './Form';
 
-export const User = ({users, current, deleteUserProp, handleSubmit}) => (
+export const User = ({users, current, deleteUserProp, resetPassword, handleSubmit}) => (
 	<div>
-		<Table users={users} deleteUser={deleteUserProp} />
+		<Table users={users} deleteUser={deleteUserProp} resetPassword={resetPassword} />
 		<hr />
 		<Form current={current} handleSubmit={handleSubmit} />
 	</div>
@@ -29,7 +29,8 @@ const mapDispatchToProps = (dispatch) => ({
 		userId ?
 			dispatch(changeUser(userId, user)) :
 			dispatch(createUser(user))
-	)
+	),
+	resetPassword: (userId) => dispatch(changeUser(userId, {password_reset: true}))
 });
 
 export default connect(

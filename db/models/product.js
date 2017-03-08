@@ -29,6 +29,10 @@ const Product = db.define('product', {
 		type: Sequelize.INTEGER,
 		allowNull: false,
 		defaultValue: 1
+	},
+	disabled: {
+		type: Sequelize.BOOLEAN,
+		defaultValue: false
 	}
 }, {
 	getterMethods: {

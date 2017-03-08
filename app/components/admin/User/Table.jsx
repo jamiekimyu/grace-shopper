@@ -1,7 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router';
 
-export default function Table({users, deleteUser}){
+export default function Table({users, deleteUser, resetPassword}){
 	return (
     <table className="admin-table">
       <thead>
@@ -22,7 +22,7 @@ export default function Table({users, deleteUser}){
           <td>{user.email}</td>
           <td>{user.isAdmin ? 'Yes' : 'No'}</td>
           <td>{user.oauth ? user.oauth.provider : 'Internal'}</td>
-          <td>{user.oauth ? '' : (<Link to={`/admin/user/${user.id}`} className="btn btn-primary">Reset Password</Link>)}</td>
+          <td>{user.oauth ? '' : (<a href="#" onClick={() => resetPassword(user.id)} className="btn btn-primary">Reset Password</a>)}</td>
           <td><Link to={`/admin/user/${user.id}`} className="btn btn-primary">Edit</Link></td>
           <td><a href="#" onClick={() => deleteUser(user.id)} className="btn btn-primary">Delete</a></td>
         </tr>
