@@ -18,7 +18,7 @@ export const SingleEquipment = ({singleEquipment, clickAddToCart}) => (
 				<button className="btn background-green" type="button">Add to Wishlist</button>
 			</div>
 			<div>
-				<Review product={service.product} />
+				<Review product={singleEquipment.product} />
 			</div>
 		</div>
 
