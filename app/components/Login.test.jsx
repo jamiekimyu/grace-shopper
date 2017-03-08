@@ -24,9 +24,9 @@ describe('<Login />', () => {
 		expect(pw.at(0)).to.have.attr('type').equals('password');
 	});
 
-	it('has a login button', () => {
+	it('has login and register buttons', () => {
 		const submit = root.find('input[type="submit"]');
-		expect(submit).to.have.length(1);
+		expect(submit).to.have.length(2);
 	});
 
 	describe('when submitted', () => {
@@ -41,6 +41,7 @@ describe('<Login />', () => {
 		};
 
 		beforeEach('submit', () => {
+			global.document = {activeElement: {id: 'login'}};
 			login.reset();
 			submitEvent.preventDefault.reset();
 			innerRoot.simulate('submit', submitEvent);

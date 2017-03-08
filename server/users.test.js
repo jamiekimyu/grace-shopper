@@ -13,10 +13,10 @@ describe('/api/users', () => {
 
 		describe('when not logged in', () => {
 
-			it('fails with a 401 (Unauthorized)', () =>
+			it('fails with a 403 (Forbidden)', () =>
         request(app)
           .get(`/api/users/1`)
-          .expect(401)
+          .expect(403)
       );
 
 		});
