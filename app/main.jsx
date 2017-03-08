@@ -12,6 +12,7 @@ import Records from './components/Records/index';
 import Record from './components/Records/Record';
 import ReviewForm from './components/Records/ReviewForm';
 import Equipment from './components/Equipment';
+import SingleEquipment from './components/SingleEquipment';
 import Product from './components/admin/Product';
 import UserAdmin from './components/admin/User';
 import {ThankYou} from './components/Thankyou';
@@ -24,6 +25,8 @@ import {getServices} from './reducers/services';
 import {getService} from './reducers/service';
 import {getRecords} from './reducers/records';
 import {getRecord} from './reducers/record';
+import {getEquipment} from './reducers/equipment';
+import {getSingleEquipment} from './reducers/SingleEquipment';
 import {loadCart} from './reducers/cart';
 import {getUserOrders} from './reducers/userOrders';
 
@@ -33,6 +36,9 @@ const onRecordsEnter = function () {
 const onServicesEnter = function () {
 	store.dispatch(getServices());
 };
+const onEquipmentEnter = function () {
+	store.dispatch(getEquipment());
+};
 
 const onRecordEnter = function (nextRouterState) {
 	const recordId = nextRouterState.params.recordId;
@@ -41,6 +47,10 @@ const onRecordEnter = function (nextRouterState) {
 const onServiceEnter = function (nextRouterState) {
 	const serviceId = nextRouterState.params.serviceId;
 	store.dispatch(getService(serviceId));
+};
+const onSingleEquipmentEnter = function (nextRouterState) {
+	const equipmentId = nextRouterState.params.equipmentId;
+	store.dispatch(getSingleEquipment(equipmentId));
 };
 
 const onAdminProductEnter = function () {
@@ -72,7 +82,8 @@ render(
 				<Route path="/records" component={Records} onEnter={onRecordsEnter} />
 				<Route path="/records/:recordId" component={Record} onEnter={onRecordEnter} />
 				<Route path="/reviewForm/:id" component={ReviewForm} />
-				<Route path="/equipment" component={Equipment} />
+				<Route path="/equipment" component={Equipment} onEnter={onEquipmentEnter} />
+				<Route path="/equipment/:equipmentId" component={SingleEquipment} onEnter={onSingleEquipmentEnter} />
 				<Route path="/checkout" component={Checkout} />
 				<Route path="/admin/product(/:id)" component={Product} onEnter={onAdminProductEnter} />
 				<Route path="/admin/user(/:id)" component={UserAdmin} onEnter={onAdminUserEnter} />

@@ -14,7 +14,7 @@ export const Record = ({service, clickAddToCart}) => (
 				<h1>Rating: Add averageRating functionality</h1>
 				<h1>Description: {service.product && service.product.description}</h1>
 				<h1>Price: {service.product && service.product.price}</h1>
-				<button className="btn btn-primary" type="button" onClick={() => clickAddToCart(service)}>Add to Cart</button>
+				<button className="btn btn-primary" type="button" disabled={service.product && service.product.disabled} onClick={() => clickAddToCart(service)}>Add to Cart</button>
 				<button className="btn background-green" type="button">Add to Wishlist</button>
 			</div>
 			<div>

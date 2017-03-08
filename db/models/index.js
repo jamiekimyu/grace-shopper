@@ -13,6 +13,7 @@ const Order = require('./order');
 const Review = require('./review');
 const OrderItem = require('./orderItem');
 const Address = require('./address');
+const Equipment = require('./equipment');
 
 OAuth.belongsTo(User);
 User.hasOne(OAuth);
@@ -40,5 +41,8 @@ User.hasMany(Review);
 
 Order.belongsTo(Address);
 Address.hasMany(Order);
+
+Equipment.belongsTo(Product);
+Product.hasMany(Equipment);
 
 module.exports = {User};
