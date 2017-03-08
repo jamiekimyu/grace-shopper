@@ -184,71 +184,71 @@ const seedRecords = () => db.Promise.map([
 const seedReviews = () => db.Promise.map([
 	{
 		rating:  Math.floor(Math.random() * 5),
-		review: "Everything is awesome!!!!!!!!!!!",
+		comment: "Everything is awesome!!!!!!!!!!!",
 		user_id: 1,
 		product_id: 1
 	},
 	{
 		rating:  Math.floor(Math.random() * 5),
-		review: "Everything is awesome!!!!!!!!!!!",
+		comment: "Everything is awesome!!!!!!!!!!!",
 		user_id: 2,
 		product_id: 5
 	},
 	{
 		rating:  Math.floor(Math.random() * 5),
-		review: "Everything is awesome!!!!!!!!!!!",
+		comment: "Everything is awesome!!!!!!!!!!!",
 		user_id: 1,
 		product_id: 8
 	},
 	{
 		rating:  Math.floor(Math.random() * 5),
-		review: "Everything is awesome!!!!!!!!!!!",
+		comment: "Everything is awesome!!!!!!!!!!!",
 		user_id: 1,
 		product_id: 2
 	},
 	{
 		rating:  Math.floor(Math.random() * 5),
-		review: "Everything is awesome!!!!!!!!!!!",
+		comment: "Everything is awesome!!!!!!!!!!!",
 		user_id: 1,
 		product_id: 4
 	},
 	{
 		rating:  Math.floor(Math.random() * 5),
-		review: "Everything is awesome!!!!!!!!!!!",
+		comment: "Everything is awesome!!!!!!!!!!!",
 		user_id: 1,
 		product_id: 6
 	},
 	{
 		rating:  Math.floor(Math.random() * 5),
-		review: "Everything is awesome!!!!!!!!!!!",
+		comment: "Everything is awesome!!!!!!!!!!!",
 		user_id: 2,
 		product_id: 4
 	},
 	{
 		rating:  Math.floor(Math.random() * 5),
-		review: "Everything is awesome!!!!!!!!!!!",
+		comment: "Everything is awesome!!!!!!!!!!!",
 		user_id: 2,
 		product_id: 9
 	},
 	{
 		rating:  Math.floor(Math.random() * 5),
-		review: "Everything is awesome!!!!!!!!!!!",
+		comment: "Everything is awesome!!!!!!!!!!!",
 		user_id: 1,
 		product_id: 10
 	},
 	{
 		rating:  Math.floor(Math.random() * 5),
-		review: "Everything is awesome!!!!!!!!!!!",
+		comment: "Everything is awesome!!!!!!!!!!!",
 		user_id: 2,
 		product_id: 3
 	},
 	{
 		rating:  Math.floor(Math.random() * 5),
-		review: "Everything is awesome!!!!!!!!!!!",
+		comment: "Everything is awesome!!!!!!!!!!!",
 		user_id: 2,
 		product_id: 1
 	}
-], review => db.model('reviews').create(review));
+], review => db.model('review').create(review));
 
 const seedServices = () => db.Promise.map([
 	{

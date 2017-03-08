@@ -11,7 +11,6 @@ export class ReviewForm extends Component {
 			review: '',
 			rating: 0
 		};
-		console.log(props.params);
 		this.state = initialState;
 		this.handleSubmit = this.handleSubmit.bind(this);
 		this.handleChange = this.handleChange.bind(this);
@@ -19,7 +18,7 @@ export class ReviewForm extends Component {
 
 	handleSubmit(event){
 		event.preventDefault();
-		this.props.addReview(this.state, this.props.record.product_id);
+		this.props.addReview(this.state, this.props.params.id);
 	}
 
 	handleChange(event){
@@ -63,9 +62,13 @@ export class ReviewForm extends Component {
 }
 
 /* --------CONTAINER-----------*/
-const mapStateToProps = ({record}) => ({record});
+const mapStateToProps = null;
 
-const mapDispatchToProps = (dispatch) => ({});
+const mapDispatchToProps = (dispatch) => ({
+	addReview: (review, productId) => (
+		dispatch(addReview(review, productId))
+	)
+});
 
 export default connect(
 	mapStateToProps,

@@ -9,7 +9,7 @@ export const Review = ({product}) => (
 		<h2>Reviews</h2>
 		<Link className="btn btn-primary style-review-button" to={`/ReviewForm/${product && product.id}`}>Add a Review!</Link>
 		<div className="panel panel-default">
-			<div className="panel-body">Review Body</div>
+			<div className="panel-body">{JSON.stringify(product && product.reviews)}</div>
 		</div>
 	</div>
 
