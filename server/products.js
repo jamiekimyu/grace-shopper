@@ -3,6 +3,7 @@
 const db = require('APP/db');
 const Product = db.model('product');
 const Record = db.model('record');
+const Review = db.model('review');
 const Service = db.model('service');
 const {reqAdmin} = require('./auth.filters');
 
@@ -40,6 +41,20 @@ module.exports = require('express').Router()
 			{
 				returning: true,
 				include: [Record, Service]
+			}
+		)
+		.then((result) => res.json(result))
+		.catch(next)
+	))
+	.post('/:productId/review', (req, res, next) => (
+		Review.create(
+			{
+				comment: req.body.review,
+				rating: req.body.rating,
+				product_id: req.params.productId
+			},
+			{
+				returning: true
 			}
 		)
 		.then((result) => res.json(result))

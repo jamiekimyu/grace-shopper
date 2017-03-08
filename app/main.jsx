@@ -8,14 +8,15 @@ import store from './store';
 import Home from './components/Home';
 import Services from './components/Services';
 import Service from './components/Service';
-import Records from './components/Records';
-import Record from './components/Record';
+import Records from './components/Records/index';
+import Record from './components/Records/Record';
+import ReviewForm from './components/Records/ReviewForm';
 import Equipment from './components/Equipment';
 import Product from './components/admin/Product';
 import UserAdmin from './components/admin/User';
 import {ThankYou} from './components/Thankyou';
 import {Vynl} from './components/Vynl';
-import Checkout from './components/Checkout';
+import Checkout from './components/Checkout'
 import User from './components/User';
 import {fetch as fetchProducts} from './reducers/products';
 import {fetch as fetchUsers} from './reducers/users';
@@ -70,6 +71,7 @@ render(
 				<Route path="/user" component={User} onEnter={onUserEnter} />
 				<Route path="/records" component={Records} onEnter={onRecordsEnter} />
 				<Route path="/records/:recordId" component={Record} onEnter={onRecordEnter} />
+				<Route path="/reviewForm/:id" component={ReviewForm} />
 				<Route path="/equipment" component={Equipment} />
 				<Route path="/checkout" component={Checkout} />
 				<Route path="/admin/product(/:id)" component={Product} onEnter={onAdminProductEnter} />
