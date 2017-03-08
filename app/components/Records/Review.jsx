@@ -19,12 +19,7 @@ export const Review = ({record}) => (
 const mapStateToProps = ({record}) => ({record});
 
 const mapDispatchToProps = (dispatch) => ({
-	clickAddToCart: (record) => {
-		const product =  Object.assign({}, record.product);
-		product.record = Object.assign({}, record);
-		delete product.record.product;
-		dispatch(addToCart(product));
-	}
+
 });
 
 export default connect(
