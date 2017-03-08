@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import FilterGenre from './FilterGenre';
-import Records from './Records';
+import FilterGenre from '../FilterGenre';
+import Records from '.';
 import { connect } from 'react-redux';
 
 const mapStateToProps = (state) => {

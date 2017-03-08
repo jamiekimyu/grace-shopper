@@ -9,6 +9,7 @@ import review from './review';
 import userOrders from './userOrders';
 import services from './services';
 import service from './service';
+import orders from './orders';
 import cart from './cart';
 import address from './address';
 import user from './user';
@@ -23,6 +24,7 @@ const rootReducer = combineReducers({
 	record,
 	review,
 	userOrders,
+	orders,
 	services,
 	service,
 	cart,

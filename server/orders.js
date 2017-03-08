@@ -5,9 +5,38 @@ const Order = db.model('order');
 const OrderItem = db.model('orderItem');
 const Address = db.model('address');
 const Product = db.model('product');
+const Record = db.model('record');
+const Service = db.model('service');
+const Equipment = db.model('equipment');
+const User = db.model('users');
 const mailer = require('./mailer');
+const {reqAdmin} = require('./auth.filters');
 
 module.exports = require('express').Router()
+	.get('/', (req, res, next) => (
+		Order.findAll({include: [User, {
+			model: OrderItem,
+			include: [{
+				model: Product,
+				include: [Record, Service, Equipment]
+			}]
+		}]})
+			.then((orders) => res.json(orders))
+			.catch(next)
+	))
+	.put('/:id', reqAdmin('only admins can update orders'), (req, res, next) => (
+		Order.update(
+			req.body,
+			{
+				where: {
+					id: req.params.id
+				},
+				returning: true
+			}
+		)
+			.then((result) => res.json(result[1][0]))
+			.catch(next)
+	))
 	.post('/', (req, res, next) => {
 		const payload = Object.assign({}, req.body);
 
