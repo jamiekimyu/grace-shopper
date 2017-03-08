@@ -2,20 +2,20 @@
 
 const db = require('APP/db');
 const Product = db.model('product');
-const Record = db.model('record');
+const Equipment = db.model('equipment');
 
 module.exports = require('express').Router()
   .get('/', (req, res, next) =>
-    Record.findAll({
+	  Equipment.findAll({
 			include: [{
 				where: {disabled: false},
 				required: true,
 				model: Product
 			}]
 		})
-    .then(records => res.json(records))
+    .then(equipment => res.json(equipment))
     .catch(next))
   .get('/:id', (req, res, next) =>
-    Record.findById(req.params.id)
-    .then(record => res.json(record))
+	  Equipment.findById(req.params.id, {include: [Product]})
+    .then(equipment => res.json(equipment))
     .catch(next));

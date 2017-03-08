@@ -18,6 +18,8 @@ module.exports = require('express').Router()
 				}
 			}
 		}).then((products) => {
+			const disabledProduct = products.find((product) => product.disabled);
+			if (disabledProduct) throw new Error(`Disabled product found. Product ID: ${disabledProduct.id}`);
 			payload.orderItems = payload.orderItems.map((item) => Object.assign({}, item, {
 				price: products.find((product) => product.id === item.product_id).price
 			}));

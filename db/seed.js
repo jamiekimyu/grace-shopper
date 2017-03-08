@@ -2,6 +2,7 @@ const db = require('APP/db');
 const Product = db.model('product');
 const Record = db.model('record');
 const Service = db.model('service');
+const Equipment = db.model('equipment');
 
 const seedUsers = () => db.Promise.map([
   {name: 'so many', email: 'god@example.com', isAdmin: true, password: '1234'},
@@ -205,6 +206,20 @@ const seedServices = () => db.Promise.map([
 	}
 ], newService => Service.create(newService, { include: [Product] }));
 
+const seedEquipment = () => db.Promise.map([
+	{
+		weight: '103 lbs.',
+		product: {
+			name: 'My Grandfather\'s Victrola',
+			price: 50500,
+			description: 'This antique victrola belonged to my grandfather. There is no sound more authentic. Includes dog statue and musty book.',
+			primaryCategory: 'Equipment',
+			photo: 'http://www.stevenjohnson.com/web-pics/granada.jpg',
+			quantity: 1
+		}
+	}
+], newEquipment => Equipment.create(newEquipment, { include: [Product] }));
+
 db.didSync
   .then(() => db.sync({force: true}))
 	.then(seedUsers)
@@ -213,5 +228,7 @@ db.didSync
 	.then(records => console.log(`Seeded ${records.length} records OK`))
 	.then(seedServices)
 	.then(services => console.log(`Seeded ${services.length} services OK`))
+	.then(seedEquipment)
+	.then(equipment => console.log(`Seeded ${equipment.length} equipment OK`))
   .catch(error => console.error(error))
   .finally(() => db.close());

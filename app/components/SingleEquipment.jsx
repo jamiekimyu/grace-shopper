@@ -5,15 +5,15 @@ import { addToCart } from '../reducers/cart';
 
 /* --------COMPONENT-----------*/
 
-export const Record = ({service, clickAddToCart}) => (
+export const SingleEquipment = ({singleEquipment, clickAddToCart}) => (
 		<div>
 			<div className="container-fluid record-page">
-				<img src={service.product && service.product.photo} className="img-thumbnail record-image" />
-				<h1>Estimated Processing Time: {service.processingTime}</h1>
+				<img src={singleEquipment.product && singleEquipment.product.photo} className="img-thumbnail record-image" />
 				<h1>Rating: Add averageRating functionality</h1>
-				<h1>Description: {service.product && service.product.description}</h1>
-				<h1>Price: {service.product && service.product.price}</h1>
-				<button className="btn btn-primary" type="button" disabled={service.product && service.product.disabled} onClick={() => clickAddToCart(service)}>Add to Cart</button>
+				<h1>Description: {singleEquipment.product && singleEquipment.product.description}</h1>
+				<h1>Weight: {singleEquipment.weight}</h1>
+				<h1>Price: {singleEquipment.product && singleEquipment.product.price}</h1>
+				<button className="btn btn-primary" type="button" disabled={singleEquipment.product && singleEquipment.product.disabled} onClick={() => clickAddToCart(singleEquipment)}>Add to Cart</button>
 				<button className="btn background-green" type="button">Add to Wishlist</button>
 			</div>
 			<div>
@@ -30,14 +30,14 @@ export const Record = ({service, clickAddToCart}) => (
 );
 
 /* --------CONTAINER-----------*/
-const mapStateToProps = ({service}) => ({
-	service
+const mapStateToProps = ({singleEquipment}) => ({
+	singleEquipment
 });
 
 const mapDispatchToProps = (dispatch) => ({
-	clickAddToCart: (service) => {
-		const product =  Object.assign({}, service.product);
-		product.record = Object.assign({}, service);
+	clickAddToCart: (singleEquipment) => {
+		const product =  Object.assign({}, singleEquipment.product);
+		product.record = Object.assign({}, singleEquipment);
 		delete product.record.product;
 		dispatch(addToCart(product));
 	}
@@ -46,4 +46,4 @@ const mapDispatchToProps = (dispatch) => ({
 export default connect(
 	mapStateToProps,
 	mapDispatchToProps
-)(Record);
+)(SingleEquipment);
