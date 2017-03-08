@@ -11,6 +11,7 @@ export class ReviewForm extends Component {
 			review: '',
 			rating: 0
 		};
+		console.log(props.params);
 		this.state = initialState;
 		this.handleSubmit = this.handleSubmit.bind(this);
 		this.handleChange = this.handleChange.bind(this);

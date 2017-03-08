@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { addToCart } from '../../reducers/cart';
-import Review from './Review';
+import {Review} from '../Review';
 
 /* --------COMPONENT-----------*/
 
@@ -21,7 +21,7 @@ export const Record = ({record, clickAddToCart}) => (
 				<button className="btn background-green" type="button">Add to Wishlist</button>
 			</div>
 			<div>
-				<Review record={record} />
+				<Review product={record.product} />
 			</div>
 		</div>
 

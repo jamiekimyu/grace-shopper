@@ -53,7 +53,7 @@ render(
 				<Route path="/services" component={Services} />
 				<Route path="/records" component={Records} onEnter={onRecordsEnter} />
 				<Route path="/records/:recordId" component={Record} onEnter={onRecordEnter} />
-				<Route path="/reviewForm" component={ReviewForm} />
+				<Route path="/reviewForm/:id" component={ReviewForm} />
 				<Route path="/equipment" component={Equipment} />
 				<Route path="/checkout" component={Checkout} />
 				<Route path="/admin/product(/:id)" component={Product} onEnter={onAdminProductEnter} />
