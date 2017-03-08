@@ -14,6 +14,7 @@ const Review = require('./review');
 const OrderItem = require('./orderItem');
 const Address = require('./address');
 const Equipment = require('./equipment');
+const WishlistItem = require('./wishlistItem');
 
 OAuth.belongsTo(User);
 User.hasOne(OAuth);
@@ -38,6 +39,12 @@ Product.hasMany(Review);
 
 Review.belongsTo(User);
 User.hasMany(Review);
+
+WishlistItem.belongsTo(User);
+User.hasMany(WishlistItem);
+
+WishlistItem.belongsTo(Product);
+Product.hasMany(WishlistItem);
 
 Order.belongsTo(Address);
 Address.hasMany(Order);

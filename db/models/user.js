@@ -4,6 +4,8 @@
 const bcrypt = require('bcryptjs');
 const Sequelize = require('sequelize');
 const db = require('APP/db');
+const WishlistItem = require('./wishlistItem');
+const Product = require('./product');
 
 const User = db.define('users', {
 	name: Sequelize.STRING,
@@ -42,6 +44,14 @@ const User = db.define('users', {
             err ? reject(err) : resolve(result))
         );
 		}
+	},
+	defaultScope: {
+		include: [
+			{
+				model: WishlistItem,
+				include: [Product]
+			}
+		]
 	}
 });
 

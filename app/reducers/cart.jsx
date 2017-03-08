@@ -68,9 +68,9 @@ export const loadCart = () => (
 	}
 );
 
-export const convertToOrder = () => (
+export const convertToOrder = (cart) => (
 	(dispatch, getState) => {
-		const {cart, user, auth, address} = getState();
+		const {user, auth, address} = getState();
 		axios.post('/api/orders', {
 			user_id: (auth && auth.id) || undefined,
 			orderItems: cart.map((item) => ({

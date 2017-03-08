@@ -15,6 +15,7 @@ import address from './address';
 import user from './user';
 import equipment from './equipment';
 import singleEquipment from './singleEquipment';
+import wishlist from './wishlist';
 
 const rootReducer = combineReducers({
 	auth,
@@ -31,7 +32,8 @@ const rootReducer = combineReducers({
 	address,
 	user,
 	equipment,
-	singleEquipment
+	singleEquipment,
+	wishlist
 });
 
 export default rootReducer;

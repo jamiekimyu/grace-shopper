@@ -8,6 +8,7 @@ const Product = db.model('product');
 const Record = db.model('record');
 const Service = db.model('service');
 const Equipment = db.model('equipment');
+const Wishlist = db.model('wishlistItem');
 const OAuth = db.model('oauths');
 
 const {mustBeLoggedIn, reqAdmin, reqAdminOrSelf} = require('./auth.filters');
@@ -52,6 +53,18 @@ module.exports = require('express').Router()
 						model: Product,
 						include: [Record, Service, Equipment]
 					}]
+				}]
+			}
+		)
+			.then(orders => res.json(orders))
+			.catch(next))
+	.get('/:id/wishlist', (req, res, next) =>
+		Wishlist.findAll(
+			{
+				where: {user_id: req.params.id},
+				include: [{
+					model: Product,
+					include: [Record, Service, Equipment]
 				}]
 			}
 		)

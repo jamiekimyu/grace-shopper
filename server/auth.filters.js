@@ -20,7 +20,6 @@ const reqAdmin = message => (req, res, next) => {
 };
 
 const reqAdminOrSelf = message => (req, res, next) => {
-	console.log(req.user.isAdmin, req.user.id, req.params, !req.user, !req.user.isAdmin, +req.params.id !== req.user.id);
 	if (!req.user || (!req.user.isAdmin && +req.params.id !== req.user.id)) {
 		return res.status(403).send(message);
 	}
