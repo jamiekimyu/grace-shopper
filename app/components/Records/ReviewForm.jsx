@@ -18,6 +18,7 @@ export class ReviewForm extends Component {
 
 	handleSubmit(event){
 		event.preventDefault();
+		this.props.addReview(this.state, this.props.record.product_id);
 	}
 
 	handleChange(event){
@@ -63,14 +64,7 @@ export class ReviewForm extends Component {
 /* --------CONTAINER-----------*/
 const mapStateToProps = ({record}) => ({record});
 
-const mapDispatchToProps = (dispatch) => ({
-	clickAddToCart: (record) => {
-		const product =  Object.assign({}, record.product);
-		product.record = Object.assign({}, record);
-		delete product.record.product;
-		dispatch(addToCart(product));
-	}
-});
+const mapDispatchToProps = (dispatch) => ({});
 
 export default connect(
 	mapStateToProps,

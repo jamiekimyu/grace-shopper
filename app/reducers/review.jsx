@@ -10,20 +10,21 @@ const addReviewAction = (review) => ({
 });
 
 //THUNKS
-/*export const addReview = (review) => ({
+export const addReview = (review, productId) => (
 	(dispatch) => {
-		axios.post('/api/review', review)
+		axios.post(`/api/product/${productId}/review`, review)
 				 .then(response => response.data)
 				 .then((newReview) => (dispatch(addReviewAction(newReview))))
 				 .catch(console.error.bind(console));
 	}
-});*/
+);
 
 
 //REDUCER
-export default (state = {}, action) => {
+export default (state = [], action) => {
 	switch(action.type){
-		case ADD_REVIEW:
-			return;
-	};
+	case ADD_REVIEW:
+		return [...state, action.review];
+	}
+	return state;
 };

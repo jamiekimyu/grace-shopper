@@ -3,6 +3,7 @@
 const db = require('APP/db');
 const Product = db.model('product');
 const Record = db.model('record');
+const Review = db.model('review');
 const {reqAdmin} = require('./auth.filters');
 
 module.exports = require('express').Router()
@@ -36,6 +37,20 @@ module.exports = require('express').Router()
 	.post('/', reqAdmin('only admins can create products'), (req, res, next) => (
 		Product.create(
 			req.body,
+			{
+				returning: true
+			}
+		)
+		.then((result) => res.json(result))
+		.catch(next)
+	))
+	.post('/:productId/review', (req, res, next) => (
+		Review.create(
+			{
+				comment: req.body.review,
+				rating: req.body.rating,
+				product_id: req.params.productId
+			},
 			{
 				returning: true
 			}
