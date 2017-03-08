@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { browserHistory } from 'react-router';
 
 //reducer
 const reducer = (state = null, action) => {
@@ -45,6 +46,9 @@ export const whoami = () => (
 			.then(response => {
 				const user = response.data;
 				dispatch(authenticated(user));
+				if(user.password_reset) {
+					browserHistory.push('/user');
+				}
 			})
 			.catch(failed => dispatch(authenticated(null)))
 );
